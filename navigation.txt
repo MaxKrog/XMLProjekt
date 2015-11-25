@@ -1,0 +1,9 @@
+Vi avser att via javascript ladda in alla våra media-posts och kommer att modifiera vilken data som sänds till
+klienten med hjälp av filtrerings-parametrar.
+
+I våran huvudvy - "MAIN" - så visas de senaste X bilderna.
+
+I en annan vy "TAGS" - Så får användaren tillgång till en lista av alla tags, dessa kan sedan markeras/avmarkeras
+och de markerade skickas till servern som skicka tillbaka alla bilder som innehåller någon av tagsen till klienten.
+
+Samma sak som tags gäller för "USERS", fast där sker filtreringen istället via användare.
