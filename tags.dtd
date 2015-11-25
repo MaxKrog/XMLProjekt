@@ -1,0 +1,2 @@
+<!ELEMENT tags (tag*) >
+	<!ELEMENT tag (#PCDATA) >

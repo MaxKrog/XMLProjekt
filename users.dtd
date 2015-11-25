@@ -1,0 +1,2 @@
+<!ELEMENT users (user*) >
+	<!ELEMENT user (#PCDATA) >
