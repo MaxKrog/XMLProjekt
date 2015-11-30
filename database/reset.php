@@ -13,11 +13,10 @@ if (mysqli_connect_errno()) {
 $query = file_get_contents("reset.sql");
 
 // Execute the query
-if( $mysqli->multi_query($query)) {
-	print("Successfully reseted database!");
-} else {
-	print("There was an error when reseting the database!");
-}
+$mysqli->multi_query($query)
+
+$result = $mysqli->fetch_all();
+print($result);
 
 $mysqli->close(); //Close DB-Connection
 ?>
