@@ -11,7 +11,6 @@ if (mysqli_connect_errno()) {
 
 // The SQL query
 $query = file_get_contents("reset.sql");
-print($query);
 
 // Execute the query
 if( $mysqli->multi_query($query)) {
