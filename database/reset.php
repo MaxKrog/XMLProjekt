@@ -11,12 +11,11 @@ if (mysqli_connect_errno()) {
 
 // The SQL query
 $query = '
-	DROP TABLE IF EXISTS "users" CASCADE;
-	CREATE TABLE "users" (
-		"username" text,
-		"password" text,
-		"role" text,
-		Constraint "users_pkey" Primary Key ("username")
+	CREATE TABLE users (
+		username text,
+		password text,
+		role text,
+		Constraint users_pkey Primary Key (username)
 	);';
 
 // Execute the query
