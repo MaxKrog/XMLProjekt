@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
 $query = file_get_contents("reset.sql");
 
 // Execute the query
-$mysqli->multi_query($query)
+$mysqli->multi_query($query);
 
 $result = $mysqli->fetch_all();
 print($result);
