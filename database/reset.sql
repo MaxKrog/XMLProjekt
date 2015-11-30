@@ -17,11 +17,11 @@ CREATE TABLE posts (
 	image text,
 	title text,
 	caption text,
-	date datetime NOT NULL DEFAULT NOW(),
-	lat double precision,
-	lng double precision,
+	lat FLOAT(9,6),
+	lng FLOAT(9,6),
 	username varchar(10) references users(username),
-	Constraint sports_pkey Primary Key (post_id)
+	createdAt DATETIME,
+	Constraint posts_pkey Primary Key (post_id)
 );
 
 CREATE TABLE tags (
@@ -47,10 +47,10 @@ VALUES (
 	'http://ett.jpg',
 	'Första posten ever!!',
 	'En beskrivning av första posten ever!!',
-	'',
-	59.329323,
-	18.068581,
-	'mkrog'
+	59.000000,
+	18.000000,
+	'mkrog',
+	'2015-11-30 19:28:30'
 );
 
 INSERT INTO posts
@@ -59,10 +59,10 @@ VALUES (
 	'http://tva.jpg',
 	'Andra posten ever!!',
 	'En beskrivning av andra posten ever!!',
-	'',
-	59.329323,
-	18.068581,
-	'mkrog'
+	59.200000,
+	18.200000,
+	'mkrog',
+	'2015-11-30 19:28:40'
 );
 
 INSERT INTO tags
@@ -82,5 +82,3 @@ VALUES(
 	2,
 	"Vänsterpack"
 );
-
-
