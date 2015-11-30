@@ -17,7 +17,7 @@ CREATE TABLE posts (
 	image text,
 	title text,
 	caption text,
-	date datetime NOT NULL DEFAULT NOW()
+	date datetime NOT NULL DEFAULT NOW(),
 	lat double precision,
 	lng double precision,
 	username varchar(10) references users(username),
