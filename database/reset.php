@@ -1,7 +1,7 @@
 
 <?php
 // Connect using host, username, password and databasename
-$link = mysqli_connect('localhost', 'mkrog', 'mkrog-xmlpub13', 'mkrog');
+$mysqli = new mysqli('localhost', 'mkrog', 'mkrog-xmlpub13', 'mkrog');
 
 // Check connection
 if (mysqli_connect_errno()) {
@@ -10,26 +10,15 @@ if (mysqli_connect_errno()) {
 }
 
 // The SQL query
-$query = '
-	CREATE TABLE users (
-		username text,
-		password text,
-		role text,
-		Constraint users_pkey Primary Key (username)
-	);';
+$query = file_get_contents("reset.sql");
+print($query);
 
 // Execute the query
-if (($result = mysqli_query($link, $query)) === false) {
-   printf("Query failed: %s<br />\n%s", $query, mysqli_error($link));
-   exit();
+if( $mysqli->multi_query($query)) {
+	print("Successfully reseted database!");
+} else {
+	print("There was an error when reseting the database!");
 }
 
-// Loop over the resulting lines
-while ($line = $result->fetch_object()) {
-	print($line);
-
-}
-//Free the result from the database
-mysqli_free_result($result);
-
+$mysqli->close(); //Close DB-Connection
 ?>
