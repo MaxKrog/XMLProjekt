@@ -1,7 +1,7 @@
 
 <?php
 // Connect using host, username, password and databasename
-$link = mysqli_connect('localhost', 'rsslab', 'rsslab', 'rsslab');
+$link = mysqli_connect('localhost', 'mkrog', 'mkrog-xmlpub13', 'mkrog');
 
 // Check connection
 if (mysqli_connect_errno()) {
