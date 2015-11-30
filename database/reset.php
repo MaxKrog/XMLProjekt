@@ -10,14 +10,14 @@ if (mysqli_connect_errno()) {
 }
 
 // The SQL query
-$query = "
+$query = '
 	DROP TABLE IF EXISTS "users" CASCADE;
 	CREATE TABLE "users" (
 		"username" text,
 		"password" text,
 		"role" text,
 		Constraint "users_pkey" Primary Key ("username")
-	);";
+	);';
 
 // Execute the query
 if (($result = mysqli_query($link, $query)) === false) {
