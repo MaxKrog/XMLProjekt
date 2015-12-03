@@ -72,3 +72,31 @@ $("#form-tags span").click(function(){
     $(this).toggleClass("label-default");
     $(this).toggleClass("label-success");
 })
+
+$('#submit').click(function(){
+	console.log("sending!");
+	var formdata = new FormData();
+	formdata.append("title", "hej");
+	formdata.append("caption", "adasd");
+	formdata.append("image", $("#image")[0].files[0]);
+    $.ajax({
+        url: '../upload.php',  //Server script to process data
+        type: 'POST',
+	//ajax-settings
+	processData: false,
+	contentType: false,
+        //Ajax events
+        success: function( a){console.log(a)},
+	error: function(a, b, c){ 
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	},
+        // Form data
+        data: formdata
+
+
+    });
+});
+
+

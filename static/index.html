@@ -59,11 +59,11 @@
 						<h4 class="modal-title">Add Image</h4>
 					</div>
 					<div class="modal-body">
-						<form class="form-horizontal">
+						<form class="form-horizontal" id="imageForm" enctype="multipart/form-data" method="POST" action="../imageupload.php" >
 							<section class="form-group">	
 								<label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="title" placeholder="Car on fire in rinkeby">
+										<input type="text" class="form-control" default="hej" id="title" name="title" placeholder="Car on fire in rinkeby">
 									</div>
 							</section>
 							<section class="form-group">
@@ -97,7 +97,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary"> Submit </button>
+						<button type="button" class="btn btn-primary" id="submit" > Submit </button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
