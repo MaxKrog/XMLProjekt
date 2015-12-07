@@ -20,7 +20,7 @@
 				$caption = $line->caption;
 				$lat = $line->lat;
 				$lng = $line->lng;
-				$user = $line->user;
+				$user = $line->username;
 
 				$returnstring .= "<post id='$post_id'>";
 	            $returnstring .= "<title>$title</title>";

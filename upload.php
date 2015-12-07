@@ -37,11 +37,12 @@ if( isLoggedIn() ) {
 			}
 		
 	}
+	
+	echo("success!");
 
 	
 } else {
-	header("Status: 401");
-	echo("Not logged in!"); 
+	header('The goggles, they do nawtink!', true, 401);
 }
 
 

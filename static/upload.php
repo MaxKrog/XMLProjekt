@@ -2,10 +2,12 @@
 
 include "../auth/isLoggedIn.php";
 
+/*
 if(!isLoggedIn()){
-	header("Location: http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php");
+	header("Location: http://xml.csc.kth.se/~mkrog/DM2517/auth/login.php");
 	die();
 }
+* */
 ?>
 <!DOCTYPE html>
 <html>
