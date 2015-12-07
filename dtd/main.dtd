@@ -6,7 +6,7 @@
 
 <!ELEMENT kriz (posts) >
 	<!ELEMENT posts (post*) >
-		<!ELEMENT post(title, caption?, image, location, user, tags) >
+		<!ELEMENT post (title, caption?, image, location, user, tags) >
 			<!ATTLIST post id CDATA #REQUIRED >
 			
 			<!ELEMENT title (#PCDATA) >

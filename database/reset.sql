@@ -66,19 +66,43 @@ VALUES (
 );
 
 INSERT INTO tags
-VALUES("Mord");
+VALUES("Murder");
 
 INSERT INTO tags
-VALUES("Djur");
+VALUES("Animals");
+
+INSERT INTO tags
+VALUES("Food");
+
+INSERT INTO tags
+VALUES("Trees");
+
+INSERT INTO tags
+VALUES("Nature");
+
+INSERT INTO tags
+VALUES("Nofilter");
+
+INSERT INTO tags
+VALUES("Reality");
+
+INSERT INTO tags
+VALUES("Crimescene");
+
+INSERT INTO tags
+VALUES("Police");
+
+INSERT INTO tags
+VALUES("Riot");
 
 INSERT INTO post_tags
 VALUES(
 	1,
-	"Mord"
+	"Murder"
 );
 
 INSERT INTO post_tags
 VALUES(
 	2,
-	"Djur"
+	"Animals"
 );
