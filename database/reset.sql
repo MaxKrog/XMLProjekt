@@ -30,8 +30,8 @@ CREATE TABLE tags (
 );
 
 CREATE TABLE post_tags (
-	post_id integer references posts(post_id),
-	tag varchar(20) references tags(tag),
+	post_id integer NOT NULL references posts(post_id),
+	tag varchar(20) NOT NULL references tags(tag),
 	Constraint post_tags_pkey Primary Key(post_id, tag)
 );
 
@@ -66,19 +66,19 @@ VALUES (
 );
 
 INSERT INTO tags
-VALUES("Katastrof");
+VALUES("Mord");
 
 INSERT INTO tags
-VALUES("Vänsterpack");
+VALUES("Djur");
 
 INSERT INTO post_tags
 VALUES(
 	1,
-	"Katastrof"
+	"Mord"
 );
 
 INSERT INTO post_tags
 VALUES(
 	2,
-	"Vänsterpack"
+	"Djur"
 );

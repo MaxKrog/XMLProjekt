@@ -2,11 +2,9 @@
 
 function isLoggedIn() {
 	if(isset($_COOKIE["username"])) {
-		return "true";
+		return TRUE;
 	} else {
-		return "false";
+		return FALSE;
 		
 	}
 }
-
-echo(isLoggedIn());
