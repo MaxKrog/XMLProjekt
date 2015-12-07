@@ -1,6 +1,6 @@
 <?php header("Content-type: text/xml; charset=utf-8"); ?>
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="index.xsl"?>
+<?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
 <!DOCTYPE kriz SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/main.dtd">
 <kriz>
 	<posts>

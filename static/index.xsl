@@ -8,7 +8,7 @@
 			<head>
 				<title>Krizfeed </title>
 				<meta charset="UTF-8"/>
-				<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+				<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"/>
 
 				<script src="http://maps.googleapis.com/maps/api/js"></script>
 				<script>
