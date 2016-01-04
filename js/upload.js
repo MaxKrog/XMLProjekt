@@ -3,16 +3,16 @@
 var positionMap;
 var userPositionMarker;
 var userPosition = {
-	lat: 0,
-	lng: 0
+	lat: 59.329323,
+	lng: 18.068581
 };
 
 var createLocationMap = function(){
 
     var mapOptions = {
         center: {
-            lat: 59.329323,
-            lng: 18.068581
+            lat: userPosition.lat,
+            lng: userPosition.lng
         },
         zoom: 16,
         streetViewControl: false,
@@ -25,8 +25,8 @@ var createLocationMap = function(){
     
     userPositionMarker = new google.maps.Marker({
         position: {
-            lat: 59.329323,
-            lng: 18.068581
+            lat: userPosition.lat,
+            lng: userPosition.lng
         },
         map: positionMap
     });
@@ -37,21 +37,31 @@ var createLocationMap = function(){
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){
-		userPosition.lat = position.coords.latitude;
-		userPosition.lng = position.coords.longitude;
-		console.log("haej");
-		console.log(userPosition);
-
-			positionMap.setCenter(new google.maps.LatLng(userPosition.lat, userPosition.lng));
-			userPositionMarker.setPosition(new google.maps.LatLng(userPosition.lat, userPosition.lng));
-		
-
-        });
+        navigator.geolocation.getCurrentPosition(newPosition, enableDrag);
     } else {
-        alert("You need to share your position to upload images.");
+        enableDrag();
     }
 }
+
+function enableDrag(){
+	alert("Could not automatically find you position, drag and click on the map instead.");
+
+	positionMap.setOptions({draggable: true});
+	positionMap.addListener("dragend", function(){
+		newPosition(positionMap.getCenter());
+	})
+};
+
+function newPosition(position, k){
+
+	userPosition.lat = position.coords ? position.coords.latitude : position.lat();
+	userPosition.lng = position.coords ? position.coords.longitude : position.lng();
+
+	positionMap.setCenter(new google.maps.LatLng(userPosition.lat, userPosition.lng));
+	userPositionMarker.setPosition(new google.maps.LatLng(userPosition.lat, userPosition.lng));
+
+
+};
 
 function getTags() {
 	var tags = $("#tags span");
@@ -67,7 +77,6 @@ function getTags() {
 $("#tags span").click(function(){
     $(this).toggleClass("label-default");
     $(this).toggleClass("label-success");
-	getTags();
 })
 
 $('#submit').click(function(){
@@ -80,27 +89,29 @@ $('#submit').click(function(){
 	formdata.append("lat", userPosition.lat);
 	formdata.append("lng", userPosition.lng);
 	formdata.append("tags", getTags());
+	console.log(formdata);
     $.ajax({
         url: './postImage.php',  //Server script to process data
         type: 'POST',
-	//ajax-settings
-	processData: false,
-	contentType: false,
-        //Ajax events
-    success: function( a){
-		console.log(a);
-		window.location = "./index.php";
-	},
-	error: function(a, b, c){ 
-		console.log(a);
-		console.log(b);
-		console.log(c);
-		//window.location = "./auth/login.php";
-		alert("Something went wrong!")
-		
-	},
+        data: formdata,
+		//ajax-settings
+		processData: false,
+		contentType: false,
+	        //Ajax events
+	    success: function( a){
+			console.log(a);
+			window.location = "./index.php";
+		},
+		error: function(a, b, c){ 
+			console.log(a);
+			console.log(b);
+			console.log(c);
+			//window.location = "./auth/login.php";
+			alert("Something went wrong!")
+			
+		}
         // Form data
-        data: formdata
+       
 
 
     });

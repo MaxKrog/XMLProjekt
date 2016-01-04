@@ -42,31 +42,6 @@ VALUES ('mkrog', 'mkrog', 'admin');
 INSERT INTO users
 VALUES ('jthorel', 'jthorel', 'admin');
 
-INSERT INTO posts
-VALUES (
-	1, 
-	'http://ett.jpg',
-	'http://ett.jpg',
-	'Första posten ever!!',
-	'En beskrivning av första posten ever!!',
-	59.000000,
-	18.000000,
-	'mkrog',
-	'2015-11-30 19:28:30'
-);
-
-INSERT INTO posts
-VALUES (
-	2, 
-	'http://tva.jpg',
-	'http://tva.jpg',
-	'Andra posten ever!!',
-	'En beskrivning av andra posten ever!!',
-	59.200000,
-	18.200000,
-	'mkrog',
-	'2015-11-30 19:28:40'
-);
 
 INSERT INTO tags
 VALUES("Murder");
@@ -98,14 +73,3 @@ VALUES("Police");
 INSERT INTO tags
 VALUES("Riot");
 
-INSERT INTO post_tags
-VALUES(
-	1,
-	"Murder"
-);
-
-INSERT INTO post_tags
-VALUES(
-	2,
-	"Animals"
-);

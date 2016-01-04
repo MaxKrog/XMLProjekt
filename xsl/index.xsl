@@ -12,17 +12,6 @@
 				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 
 				<script src="http://maps.googleapis.com/maps/api/js"></script>
-				<script>
-					function initialize() {
-					  var mapProp = {
-					    center:new google.maps.LatLng(51.508742,-0.120850),
-					    zoom:5,
-					    mapTypeId:google.maps.MapTypeId.ROADMAP
-					  };
-					  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-					}
-					google.maps.event.addDomListener(window, 'load', initialize);
-				</script>
 
 			</head>
 
@@ -60,6 +49,8 @@
 					</section>
 				</section>
 
+			<script src="./js/jquery.min.js" type="text/javascript"></script>
+			<script src="./js/index.js"></script>
 			</body>
 		</html>
 
@@ -85,7 +76,7 @@
     </xsl:template>
 
 	<xsl:template match="posts/post">
-		<li class="list-group-item">
+		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}">
        		<div class="media">
        			<div class="media-left">
        				<a href=".{imagemedium}" target="_new">
