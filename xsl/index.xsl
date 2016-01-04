@@ -87,15 +87,17 @@
        		<div class="media">
        			<div class="media-left">
        				<a href="#">
-       					<img class="media-object" style="width:80px; height:80px" src=".{image}"/>
+       					<img class="media-object" style="height:90px" src=".{image}"/>
        				</a>
        			</div>
        			<div class="media-body">
        				<h4 class="media-heading"> <xsl:value-of select="title" /> </h4>
        				<xsl:value-of select="caption" />
        				
-       				<xsl:apply-templates select="tags/tag" />
+       				<br/><div class="well well-sm"><xsl:apply-templates select="tags/tag" /></div>
+       				
        			</div>
+       			
        		</div>
 
 		</li>
