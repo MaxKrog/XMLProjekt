@@ -5,5 +5,5 @@ if (isset($_COOKIE['username'])) {
 	unset($_COOKIE['username']);
 }
 
-header("Location: http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php");
+header("Location: ../index.php");
 die();

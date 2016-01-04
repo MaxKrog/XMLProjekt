@@ -51,7 +51,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default"><a href="http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php" >Back to startpage</a></button>
+				<button type="button" class="btn btn-default"><a href="./index.php" >Back to startpage</a></button>
 				<button type="button" class="btn btn-primary" id="submit" > Upload image </button>
 			</div>
 
