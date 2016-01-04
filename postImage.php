@@ -1,15 +1,19 @@
 <?php
 
 include "./auth/isLoggedIn.php";
+include "./imageprocessing.php";
+
 if( isLoggedIn() ) {
 	header("Status: 200");
 
-	$filename  = "/uploadedImages/" . $_FILES["image"]["size"] . "_" . $_FILES["image"]["name"];
-	$dest = getcwd() . $filename;
-	move_uploaded_file($_FILES["image"]["tmp_name"], $dest);
-	
+	$filename_medium  = getcwd() . "/uploadedImages/" . "medium_" . $_FILES["image"]["size"] . "_" . $_FILES["image"]["name"];
+	$filename_thumb = getcwd() . "/uploadedImages/" . "thumb_" . $_FILES["image"]["size"] . "_" . $_FILES["image"]["name"];
+	move_uploaded_file($_FILES["image"]["tmp_name"], $filename_medium);
+	createThumb($filename_medium, $filename_thumb);
+	createMedium($filename_medium, $filename_medium);
 
-	$image = $filename;
+	$image_medium = $filename_medium;
+	$image_thumb = $filename_thumb;
 	$title = $_POST["title"];
 	$caption = $_POST["caption"];
 	$lat = $_POST["lat"];
@@ -18,9 +22,11 @@ if( isLoggedIn() ) {
 	$createdAt = date("Y-m-d H:i:s");
 	$query =" 
 		INSERT INTO posts
-		(image, title, caption, lat, lng, username, createdAt)
-		VALUES('$image', '$title', '$caption', $lat, $lng, '$username', '$createdAt');";
+		(image_medium, image_thumb, title, caption, lat, lng, username, createdAt)
+		VALUES('$image_medium','$image_thumb', '$title', '$caption', $lat, $lng, '$username', '$createdAt');";
+		
 	include "./database/connection.php";
+	
 	if(!$mysqli->query($query)){
 		
 		echo($mysqli->error);

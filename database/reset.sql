@@ -14,7 +14,8 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
 	post_id integer NOT NULL AUTO_INCREMENT,
-	image text,
+	image_medium text,
+	image_thumb text,
 	title text,
 	caption text,
 	lat FLOAT(9,6),
@@ -45,6 +46,7 @@ INSERT INTO posts
 VALUES (
 	1, 
 	'http://ett.jpg',
+	'http://ett.jpg',
 	'Första posten ever!!',
 	'En beskrivning av första posten ever!!',
 	59.000000,
@@ -56,6 +58,7 @@ VALUES (
 INSERT INTO posts
 VALUES (
 	2, 
+	'http://tva.jpg',
 	'http://tva.jpg',
 	'Andra posten ever!!',
 	'En beskrivning av andra posten ever!!',

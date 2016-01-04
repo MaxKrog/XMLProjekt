@@ -32,7 +32,8 @@
 			while ($line) {
 				$post_id = $line->post_id;
 				$title = $line->title;
-				$image = $line->image;
+				$image_medium = $line->image_medium;
+				$image_thumb = $line->image_thumb;
 				$caption = $line->caption;
 				$lat = $line->lat;
 				$lng = $line->lng;
@@ -43,7 +44,8 @@
 				$returnstring .= "<post id='$post_id'>";
 	            $returnstring .= "<title>$title</title>";
 	            $returnstring .= "<caption>$caption</caption>";
-				$returnstring .= "<image>$image</image>";
+				$returnstring .= "<imagemedium>$image_medium</imagemedium>";
+				$returnstring .= "<imagethumb>$image_thumb</imagethumb>";
 	            $returnstring .= "<location>";
 	            $returnstring .= "<lat>$lat</lat>";
 	            $returnstring .= "<lng>$lng</lng>";
