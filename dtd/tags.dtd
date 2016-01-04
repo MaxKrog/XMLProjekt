@@ -1,2 +1,6 @@
-<!ELEMENT tags (tag*) >
-	<!ELEMENT tag (#PCDATA) >
+<!ELEMENT kriz (userinfo, tags) >
+	<!ELEMENT userinfo (authorized, username?)>
+		<!ELEMENT authorized (#PCDATA)>
+		<!ELEMENT username (#PCDATA)> 
+	<!ELEMENT tags (tag*) >
+		<!ELEMENT tag (#PCDATA) >

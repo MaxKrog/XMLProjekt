@@ -2,8 +2,8 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:template match="tags">
 
+<xsl:template match="kriz">
 	<html>
 		<head>
 			<title>Krizfeed </title>
@@ -13,6 +13,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<body>
 
 			<section class="container-fluid">
+
+				<!-- TEMPLATE -->
+				<xsl:apply-templates select="userinfo" />
 
 				<div class="modal-header">
 					<h4 class="modal-title">Add Image</h4>
@@ -41,7 +44,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<section class="form-group" id="form-tags">
 						<label for="image" class="col-sm-2 control-label">Choose Tags</label>
 						<div class="col-sm-10" id="tags">
-							<xsl:apply-templates select="tag" />
+							<!-- TEMPLATE -->
+							<xsl:apply-templates select="tags/tag" />
 						</div>
 					</section>
 					<section class="form-group">
@@ -65,6 +69,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </html>
 
 	</xsl:template>
+
+	<!-- IMPORTING TEMPLATES -->
+	<xsl:include href="header.xsl" />
 
 	<xsl:template match="tag">
 		<span class="label label-default" style="cursor: pointer;"><xsl:value-of select="." /></span>
