@@ -12,7 +12,7 @@
 				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 
 				<script src="http://maps.googleapis.com/maps/api/js"></script>
-				<script>/*
+				<script>
 					function initialize() {
 					  var mapProp = {
 					    center:new google.maps.LatLng(51.508742,-0.120850),
@@ -21,7 +21,7 @@
 					  };
 					  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 					}
-					google.maps.event.addDomListener(window, 'load', initialize);*/
+					google.maps.event.addDomListener(window, 'load', initialize);
 				</script>
 
 			</head>
@@ -30,31 +30,33 @@
 
 				<section class="container-fluid">
 
-						<header class="row">
-							<nav class="navbar navbar-inverse navbar-static-top">
-								<div class="container">
-									<div class="navbar-header">
-										<a class="navbar-brand" href="#">
-											Krizfeed
-										</a>
-									</div>
-									<ul class="nav navbar-nav navbar-right">		
-										<xsl:apply-templates select="userinfo" />
-									</ul>
+					<header class="row">
+						<nav class="navbar navbar-inverse navbar-static-top">
+							<div class="container">
+								<div class="navbar-header">
+									<a class="navbar-brand" href="#">
+										Krizfeed
+									</a>
 								</div>
-							</nav>
-						</header>
+								<ul class="nav navbar-nav navbar-right">		
+									<xsl:apply-templates select="userinfo" />
+								</ul>
+							</div>
+						</nav>
+					</header>
 
 					<section class="row">
 						<div class="container">
-							<div class="col-md-12">
+
+							<div class="col-md-6">
 								<ul class="list-group">
-									<!-- POSTS GO HERE -->
 									<xsl:apply-templates select="posts/post"/>
 								</ul>
 							</div>
+							<div class="col-md-6" id="googleMap" style="min-height:500px">
+
+							</div>
 						</div>
-						<!-- <div class="col-md-8" id="googleMap" style="min-height:500px"></div> -->
 					</section>
 				</section>
 
@@ -86,8 +88,8 @@
 		<li class="list-group-item">
        		<div class="media">
        			<div class="media-left">
-       				<a href="#">
-       					<img class="media-object" style="height:90px" src=".{image}"/>
+       				<a href=".{imagemedium}" target="_new">
+       					<img class="media-object" src=".{imagethumb}"/>
        				</a>
        			</div>
        			<div class="media-body">

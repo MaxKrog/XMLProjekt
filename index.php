@@ -19,7 +19,7 @@
 
 			include "./database/connection.php";
 
-			$query = "SELECT A.post_id, image, title, caption, lat, lng, username, createdAt, tag
+			$query = "SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, tag
 						FROM posts AS A
 						JOIN post_tags AS B ON A.post_id = B.post_id
 					ORDER BY post_id DESC";

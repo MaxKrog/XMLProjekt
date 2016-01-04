@@ -9,12 +9,13 @@
 		<!ELEMENT authorized (#PCDATA)>
 		<!ELEMENT username (#PCDATA)> 
 	<!ELEMENT posts (post*) >
-		<!ELEMENT post (title, caption?, image, location, user, createdat, tags) >
+		<!ELEMENT post (title, caption?, imagemedium, imagethumb, location, user, createdat, tags) >
 			<!ATTLIST post id CDATA #REQUIRED >
 			
 			<!ELEMENT title (#PCDATA) >
 			<!ELEMENT caption (#PCDATA) >
-			<!ELEMENT image (#PCDATA) >
+			<!ELEMENT imagemedium (#PCDATA) >
+			<!ELEMENT imagethumb (#PCDATA) >
 			<!ELEMENT location (lat, lng) >
 				<!ELEMENT lat (#PCDATA) >
 				<!ELEMENT lng (#PCDATA) >

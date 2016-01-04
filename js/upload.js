@@ -88,13 +88,15 @@ $('#submit').click(function(){
 	contentType: false,
         //Ajax events
     success: function( a){
-		window.location = "../index.php";
+		console.log(a);
+		window.location = "./index.php";
 	},
 	error: function(a, b, c){ 
 		console.log(a);
 		console.log(b);
 		console.log(c);
-		window.location = "../auth/login.php";
+		//window.location = "./auth/login.php";
+		alert("Something went wrong!")
 		
 	},
         // Form data

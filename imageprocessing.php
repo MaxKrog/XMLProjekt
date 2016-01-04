@@ -1,7 +1,7 @@
 <?php
 function createThumb($pathToImg, $newname){
-	$dest_width = 80;
-	$dest_height = 80;
+	$dest_width = 120;
+	$dest_height = 120;
 
 	$orig_img = ImageCreateFromPNG($pathToImg);	//OR JPEG
 	$orig_width = imagesx($orig_img);
