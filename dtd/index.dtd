@@ -4,7 +4,10 @@
 <!ENTITY brkbar '&#166;'>
 <!ENTITY ccedil '&#231;'>
 
-<!ELEMENT kriz (posts) >
+<!ELEMENT kriz (userinfo, posts) >
+	<!ELEMENT userinfo (authorized, username?)>
+		<!ELEMENT authorized (#PCDATA)>
+		<!ELEMENT username (#PCDATA)> 
 	<!ELEMENT posts (post*) >
 		<!ELEMENT post (title, caption?, image, location, user, tags) >
 			<!ATTLIST post id CDATA #REQUIRED >

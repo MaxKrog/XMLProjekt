@@ -1,8 +1,19 @@
 <?php header("Content-type: text/xml; charset=utf-8"); ?>
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
-<!DOCTYPE kriz SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/main.dtd">
+<?xml-stylesheet type="text/xsl" href="xsl/index.xsl"?>
+<!DOCTYPE kriz SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/index.dtd">
 <kriz>
+	<userinfo>
+    <?php
+    	include "./auth/isLoggedIn.php";
+    	if( isLoggedIn() ) {
+    		echo("<authorized>true</authorized>");
+    		echo("<username>" . $_COOKIE["username"] . "</username>" );
+    	} else {
+    		echo("<authorized>false</authorized>");
+    	} 
+	?>
+    </userinfo>
 	<posts>
 		<?php
 

@@ -8,7 +8,7 @@
 			<head>
 				<title>Krizfeed </title>
 				<meta charset="UTF-8"/>
-				<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"/>
+				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 
 				<script src="http://maps.googleapis.com/maps/api/js"></script>
 				<script>
@@ -37,9 +37,8 @@
 											Krizfeed
 										</a>
 									</div>
-									<ul class="nav navbar-nav navbar-right">
-										<li><button type="button" class="btn btn-primary navbar-btn" id="addImage">Add Image</button></li>
-										<li><button type="button" class="btn btn-primary navbar-btn">Sign in</button></li>
+									<ul class="nav navbar-nav navbar-right">		
+										<xsl:apply-templates match="userinfo" />
 									</ul>
 								</div>
 							</nav>
@@ -67,6 +66,13 @@
 		<div class="list-group-item">
        		<xsl:value-of select="title"/><br/>
 		</div>
+    </xsl:template>
+    
+    <xsl:template match="userinfo">
+    	<xsl:if test="authorized">
+    		<li><button type="button" class="btn btn-primary navbar-btn" id="addImage"><xsl:value-of select="username" /></button></li>
+			<li><button type="button" class="btn btn-primary navbar-btn">Sign in</button></li>
+    	</xsl:if>
     </xsl:template>
 
 

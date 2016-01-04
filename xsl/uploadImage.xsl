@@ -58,7 +58,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 			<script src="../static/jquery.min.js" type="text/javascript"></script>
-			<script src="./upload.js" type="text/javascript"></script>
+			<script src="./get.js" type="text/javascript"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5QnhfpQAZ6ZKD-4KR5gQVn4N3pcIs0cc&amp;callback=createLocationMap"></script>
 			</section>
 		</body>
