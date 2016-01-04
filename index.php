@@ -19,13 +19,17 @@
 
 			include "./database/connection.php";
 
-			$query = "SELECT * FROM posts ORDER BY post_id DESC;";
+			$query = "SELECT A.post_id, image, title, caption, lat, lng, username, createdAt, tag
+						FROM posts AS A
+						JOIN post_tags AS B ON A.post_id = B.post_id
+					ORDER BY post_id DESC";
 
 			$result = mysqli_query($mysqli, $query);
 
 			$returnstring = '';
 
-			while ($line = $result->fetch_object()) {
+			$line = $result->fetch_object();
+			while ($line) {
 				$post_id = $line->post_id;
 				$title = $line->title;
 				$image = $line->image;
@@ -33,6 +37,8 @@
 				$lat = $line->lat;
 				$lng = $line->lng;
 				$user = $line->username;
+				$createdAt = $line->createdAt;
+				
 
 				$returnstring .= "<post id='$post_id'>";
 	            $returnstring .= "<title>$title</title>";
@@ -43,7 +49,14 @@
 	            $returnstring .= "<lng>$lng</lng>";
 	            $returnstring .= "</location>";
 	            $returnstring .= "<user>$user</user>";
-	            $returnstring .= "<tags></tags>";
+	            $returnstring .= "<createdat>$createdAt</createdat>";
+	            $returnstring .= "<tags>";
+	            do{
+	            	$tag = $line->tag;
+	            	$returnstring .= "<tag>$tag</tag>";
+	            	$line = $result->fetch_object();
+	            } while ( $line->post_id == $post_id );
+	            $returnstring .= "</tags>";
 	            $returnstring .= "</post>";
 
 	        }

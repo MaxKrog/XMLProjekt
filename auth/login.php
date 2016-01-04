@@ -1,7 +1,12 @@
 <?php
 
 //WHEN LOGGED IN username-cookie is set to the username. Not very secure.
+include "./isLoggedIn.php";
 
+if( isLoggedIn() ) { // User allready is logged in
+	header("Location: http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php");
+	die();
+}
 $failedLogin = False;
 
 if(isset($_POST["username"]) && isset($_POST["password"]) ){
@@ -27,7 +32,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) ){
 	<head>
 		<title>Krizfeed </title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	</head>
 	<body>
 
@@ -51,7 +56,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) ){
 
 
 
-		<script src="jquery.min.js" type="text/javascript"></script>
+		<script src="../js/jquery.min.js" type="text/javascript"></script>
 
 	</body>
 </html>

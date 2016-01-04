@@ -9,7 +9,7 @@
 		<!ELEMENT authorized (#PCDATA)>
 		<!ELEMENT username (#PCDATA)> 
 	<!ELEMENT posts (post*) >
-		<!ELEMENT post (title, caption?, image, location, user, tags) >
+		<!ELEMENT post (title, caption?, image, location, user, createdat, tags) >
 			<!ATTLIST post id CDATA #REQUIRED >
 			
 			<!ELEMENT title (#PCDATA) >
@@ -19,6 +19,7 @@
 				<!ELEMENT lat (#PCDATA) >
 				<!ELEMENT lng (#PCDATA) >
 			<!ELEMENT user (#PCDATA) >
+			<!ELEMENT createdat (#PCDATA) >
 			<!ELEMENT tags (tag*) >
 				<!ELEMENT tag (#PCDATA) >
 				

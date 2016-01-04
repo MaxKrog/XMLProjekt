@@ -8,7 +8,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<head>
 			<title>Krizfeed </title>
 			<meta charset="UTF-8" />
-			<link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css"/>
+			<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
 		</head>
 		<body>
 
@@ -57,8 +57,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 
-			<script src="../static/jquery.min.js" type="text/javascript"></script>
-			<script src="./get.js" type="text/javascript"></script>
+			<script src="./js/jquery.min.js" type="text/javascript"></script>
+			<script src="./js/upload.js" type="text/javascript"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5QnhfpQAZ6ZKD-4KR5gQVn4N3pcIs0cc&amp;callback=createLocationMap"></script>
 			</section>
 		</body>

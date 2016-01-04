@@ -1,50 +1,20 @@
 <?php
-
-include "./auth/isLoggedIn.php";
-if( isLoggedIn() ) {
-	header("Status: 200");
-
-	$filename  = "/uploadedImages/" . $_FILES["image"]["size"] . "_" . $_FILES["image"]["name"];
-	$dest = getcwd() . $filename;
-	move_uploaded_file($_FILES["image"]["tmp_name"], $dest);
-	
-
-	$image = $filename;
-	$title = $_POST["title"];
-	$caption = $_POST["caption"];
-	$lat = $_POST["lat"];
-	$lng = $_POST["lng"];
-	$username = $_COOKIE["username"];
-	$createdAt = date("Y-m-d H:i:s");
-	$query =" 
-		INSERT INTO posts
-		(image, title, caption, lat, lng, username, createdAt)
-		VALUES('$image', '$title', '$caption', $lat, $lng, '$username', '$createdAt');";
-	include "./database/connection.php";
-	if(!$mysqli->query($query)){
-		
-		echo($mysqli->error);
-		
-	} elseif( isset($_POST["tags"]) && strlen($_POST["tags"]) > 0 ) {
-		//Connect post to tags
-		$post_id = $mysqli->insert_id;
-		echo($_POST["tags"]);
-		$tags = explode(",", $_POST["tags"]);
-		echo($tags);
-
-		foreach($tags as $tag){
-			$mysqli->query("INSERT INTO post_tags VALUES($post_id, '$tag');");
-			}
-		
-	}
-	
-	echo("success!");
-
-	
-} else {
-	header('The goggles, they do nawtink!', true, 401);
-}
-
-
-
+header("Content-type: text/xml; charset=utf-8");
 ?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/upload.xsl"?>
+<!DOCTYPE tags SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/tags.dtd">
+
+<tags>
+
+<?php
+include "./database/connection.php";
+
+$result = $mysqli->query("SELECT tag FROM tags;");
+while($row = $result->fetch_row()){
+	echo("<tag>" . $row[0] . "</tag>" );
+}
+?>
+</tags>
+
+

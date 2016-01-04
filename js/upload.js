@@ -81,13 +81,13 @@ $('#submit').click(function(){
 	formdata.append("lng", userPosition.lng);
 	formdata.append("tags", getTags());
     $.ajax({
-        url: '../upload.php',  //Server script to process data
+        url: './postImage.php',  //Server script to process data
         type: 'POST',
 	//ajax-settings
 	processData: false,
 	contentType: false,
         //Ajax events
-        success: function( a){
+    success: function( a){
 		window.location = "http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php";
 	},
 	error: function(a, b, c){ 
