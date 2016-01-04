@@ -4,7 +4,7 @@
 include "./isLoggedIn.php";
 
 if( isLoggedIn() ) { // User allready is logged in
-	header("Location: http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php");
+	header("Location: ../index.php");
 	die();
 }
 $failedLogin = False;
@@ -19,7 +19,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) ){
 	if($password == $row[1]){
 		//SÄTT COOKIE
 		setcookie("username", $username, 0, "/");
-		header("Location: http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php");
+		header("Location: ../index.php");
 		die();
 	} else {
 		$failedLogin = True;

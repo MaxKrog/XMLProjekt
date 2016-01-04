@@ -3,7 +3,7 @@ header("Content-type: text/xml; charset=utf-8");
 ?>
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="xsl/upload.xsl"?>
-<!DOCTYPE tags SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/tags.dtd">
+<!DOCTYPE tags SYSTEM "./dtd/tags.dtd">
 
 <tags>
 

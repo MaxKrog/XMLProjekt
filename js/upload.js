@@ -88,13 +88,13 @@ $('#submit').click(function(){
 	contentType: false,
         //Ajax events
     success: function( a){
-		window.location = "http://xml.csc.kth.se/~mkrog/DM2517/projekt/index.php";
+		window.location = "../index.php";
 	},
 	error: function(a, b, c){ 
 		console.log(a);
 		console.log(b);
 		console.log(c);
-		window.location = "http://xml.csc.kth.se/~mkrog/DM2517/projekt/auth/login.php";
+		window.location = "../auth/login.php";
 		
 	},
         // Form data

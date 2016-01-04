@@ -66,18 +66,18 @@
     <xsl:template match="userinfo">
     	<xsl:if test="authorized = 'false'">
 			<li>
-				<a href="http://xml.csc.kth.se/~mkrog/DM2517/projekt/auth/login.php"> Sign in  </a>
+				<a href="./auth/login.php"> Sign in  </a>
 			</li>
     	</xsl:if>
     	<xsl:if test="authorized = 'true'">
     		<li>
-				<a href="http://xml.csc.kth.se/~mkrog/DM2517/projekt/upload.php"> Upload image  </a>
+				<a href="upload.php"> Upload image  </a>
 			</li>
 			<li>
-				<p class="navbar-text" > You are logged in as: <xsl:value-of select="username" /> </p>
+				<p class="navbar-text" ><xsl:value-of select="username" /> </p>
 			</li> 
 			<li>
-				<a href="http://xml.csc.kth.se/~mkrog/DM2517/projekt/auth/logout.php"> Sign out  </a>
+				<a href="./auth/logout.php"> Sign out  </a>
 			</li>
     	</xsl:if>
     </xsl:template>
