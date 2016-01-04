@@ -33,6 +33,13 @@ function addMarkers(map){
 
     	marker.addListener("click", function(){
     		$(_this).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+
+    		var container = $("#posts");
+			var scrollTo = $(_this);
+
+			container.animate({
+				scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+			});
     	})
 
     	markers.push(marker);
@@ -60,6 +67,7 @@ function keepMapHeight() {
 	if($(document).width() >= 992 ){
 		var height = window.innerHeight - $("#googleMap").offset().top - 20;
 		$("#googleMap").height(height);
+		$("#posts").height(height);
 	} else {
 		$("#googleMap").height(500);
 	}
