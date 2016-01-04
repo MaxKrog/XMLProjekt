@@ -46,3 +46,22 @@ function addMarkers(map){
 	map.fitBounds(bounds);
 };
 
+
+// DESIGN JS FROM HERE AND DOWNWARDS
+
+$(document).ready(function() {
+	keepMapHeight();
+	$(window).resize(function(){
+		keepMapHeight();
+	})
+});
+
+function keepMapHeight() {
+	if($(document).width() >= 992 ){
+		var height = window.innerHeight - $("#googleMap").offset().top - 20;
+		$("#googleMap").height(height);
+	} else {
+		$("#googleMap").height(500);
+	}
+}
+

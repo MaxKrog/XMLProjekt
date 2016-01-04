@@ -28,7 +28,7 @@
 									<xsl:apply-templates select="posts/post"/>
 								</ul>
 							</div>
-							<div class="col-md-6" id="googleMap" style="min-height:500px">
+							<div class="col-md-6" id="googleMap">
 
 							</div>
 						</div>

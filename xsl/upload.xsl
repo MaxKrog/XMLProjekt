@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="kriz">
@@ -21,43 +20,43 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<h4 class="modal-title">Add Image</h4>
 				</div>
 
-			<div class="modal-body">
-				<form class="form-horizontal" id="imageForm" enctype="multipart/form-data" method="POST" action="../imageupload.php" >
-					<section class="form-group">	
-						<label class="col-sm-2 control-label">Title</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="title" name="title" placeholder="Car on fire in rinkeby" />
-						</div>
-					</section>
-					<section class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">Caption</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="caption" placeholder="The car is about to blow up!" />
-						</div>
-					</section>
-					<section class="form-group">
-						<label for="image" class="col-sm-2 control-label">Choose Image</label>
-						<div class="col-sm-10">
-							<input type="file" id="image" />
-						</div>
-					</section>
-					<section class="form-group" id="form-tags">
-						<label for="image" class="col-sm-2 control-label">Choose Tags</label>
-						<div class="col-sm-10" id="tags">
-							<!-- TEMPLATE -->
-							<xsl:apply-templates select="tags/tag" />
-						</div>
-					</section>
-					<section class="form-group">
-						<label class="col-sm-2 control-label">Position</label>
-						<div class="col-sm-10" style="min-height: 130px" id="locationMap"></div>
-					</section>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default"><a href="./index.php" >Back to startpage</a></button>
-				<button type="button" class="btn btn-primary" id="submit" > Upload image </button>
-			</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="imageForm" enctype="multipart/form-data" method="POST" action="../imageupload.php" >
+						<section class="form-group">	
+							<label class="col-sm-2 control-label">Title</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="title" name="title" placeholder="Car on fire in rinkeby" />
+							</div>
+						</section>
+						<section class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">Caption</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="caption" placeholder="The car is about to blow up!" />
+							</div>
+						</section>
+						<section class="form-group">
+							<label for="image" class="col-sm-2 control-label">Choose Image</label>
+							<div class="col-sm-10">
+								<input type="file" id="image" />
+							</div>
+						</section>
+						<section class="form-group" id="form-tags">
+							<label for="image" class="col-sm-2 control-label">Choose Tags</label>
+							<div class="col-sm-10" id="tags">
+								<!-- TEMPLATE -->
+								<xsl:apply-templates select="tags/tag" />
+							</div>
+						</section>
+						<section class="form-group">
+							<label class="col-sm-2 control-label">Position</label>
+							<div class="col-sm-10" style="min-height: 130px" id="locationMap"></div>
+						</section>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"><a href="./index.php" >Back to startpage</a></button>
+					<button type="button" class="btn btn-primary" id="submit" > Upload image </button>
+				</div>
 
 
 
