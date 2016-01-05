@@ -33,6 +33,7 @@ if( isset($_POST["username"]) && isset($_POST["password"]) ){
 	<head>
 		<title>Krizfeed </title>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	</head>
 	<body>

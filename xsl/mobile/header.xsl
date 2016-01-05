@@ -2,33 +2,34 @@
 
 	<xsl:template match="userinfo">
 		<header class="row">
-			<nav class="navbar navbar-inverse navbar-static-top">
-				<div class="container">
-					<div class="navbar-header">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">						
 						<a class="navbar-brand" href="index.php">
-							Krizfeed mobile
+							Krizfeed
 						</a>
-					</div>
-					<ul class="nav navbar-nav">		
-						<xsl:if test="authorized = 'false'">
+						<div class="nav-collapse">
+							<ul class="nav navbar-nav navbar-right">		
+								<xsl:if test="authorized = 'false'">
 
-							<li><a href="./auth/login.php"> Sign in  </a></li>
-							
-						</xsl:if>
-						<xsl:if test="authorized = 'true'">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="index.php">Frontpage</a></li>
-									<li><a href="upload.php">Upload image</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#"><xsl:value-of select="username"/></a></li>
-									<li><a href="./auth/logout.php"> Sign out  </a></li>
-								</ul>
-							</li>
-							
-						</xsl:if>
-					</ul>
+									<li><a href="./auth/login.php"> Sign in  </a></li>
+									
+								</xsl:if>
+								<xsl:if test="authorized = 'true'">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="index.php">Frontpage</a></li>
+											<li><a href="upload.php">Upload image</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#"><xsl:value-of select="username"/></a></li>
+											<li><a href="./auth/logout.php"> Sign out  </a></li>
+										</ul>
+									</li>	
+								</xsl:if>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</nav>
 		</header>
