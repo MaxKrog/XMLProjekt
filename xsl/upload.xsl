@@ -52,7 +52,7 @@
 						</section>
 						<section class="form-group">
 							<label class="col-sm-2 control-label">Position</label>
-							<div class="col-sm-10" style="min-height: 130px" id="locationMap"></div>
+							<div class="col-sm-10" style="min-height: 350px" id="locationMap"></div>
 						</section>
 					</form>
 				</div>

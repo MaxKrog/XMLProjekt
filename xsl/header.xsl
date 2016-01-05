@@ -5,7 +5,7 @@
 			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">
+						<a class="navbar-brand" href="index.php">
 							Krizfeed
 						</a>
 					</div>
@@ -19,11 +19,11 @@
 
 							<li><a href="index.php"> Frontpage  </a></li>
 							<li><a href="upload.php"> Upload post  </a></li>
-							<li id="adminpanel"><a href="#"> User administration </a></li>
+							<xsl:if test="role = 'admin'">
+								<li id="adminpanel"><a href="#"> User administration </a></li>
+							</xsl:if>
 							
-
 							<li><p class="navbar-text" ><xsl:value-of select="username" /></p></li> 
-
 							<li><a href="./logout.php"> Sign out  </a></li>
 						</xsl:if>
 					</ul>
@@ -31,8 +31,8 @@
 			</nav>
 		</header>
 		<!-- MODAL -->
-		<xsl:if test="authorized = 'true'">
-						<div class="modal" tabindex="-1" role="dialog" id="modal">
+		<xsl:if test="role = 'admin'">
+			<div class="modal" tabindex="-1" role="dialog" id="modal">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">

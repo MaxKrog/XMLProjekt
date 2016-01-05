@@ -2,7 +2,7 @@
 
 
 	<xsl:template match="posts/post">
-		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}">
+		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}" data-title="{title}" data-id="{@id}" data-caption="{caption}">
        		<div class="media">
        			<div class="media-left">
        				<a href="{imagemedium}" target="_new">
@@ -10,8 +10,16 @@
        				</a>
        			</div>
        			<div class="media-body">
-       				<h4 class="media-heading"> <xsl:value-of select="title" /> </h4>
-       				<xsl:value-of select="caption" />
+
+       				 <h4 class="media-heading">
+                        <span class="spanTitle" > <xsl:value-of select="title" /> </span>
+                       
+                        <span id="goto" style="cursor: pointer" class=" pull-right glyphicon glyphicon-pushpin"></span>
+                        <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px"></span>
+                        
+                    </h4> 
+
+       				<span class="spanCaption"><xsl:value-of select="caption" /> </span>
 
        				<br/>
               <div class="well well-sm">

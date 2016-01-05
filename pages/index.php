@@ -17,26 +17,23 @@ if($detect->isMobile()){
 
 <!DOCTYPE kriz SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/index.dtd">
 <kriz>
-	<userinfo>
-    <?php
-    	include "../misc/isLoggedIn.php";
-    	if( isLoggedIn() ) {
-    		echo("<authorized>true</authorized>");
-    		echo("<username>" . $_COOKIE["username"] . "</username>" );
-    	} else {
-    		echo("<authorized>false</authorized>");
-    	}
+	<?php 
+	include("../misc/userinfo.php");
+	userinfo();
 	?>
-    </userinfo>
 	<posts>
 		<?php
-
 			include "../database/connection.php";
 
-			$query = "SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, tag
-						FROM posts AS A
-						JOIN post_tags AS B ON A.post_id = B.post_id
-					ORDER BY post_id DESC";
+
+			$searchstring = isset($_GET["searchstring"]) ? $_GET["searchstring"] : "";
+
+			$query = "
+				SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, tag
+					FROM posts AS A
+					LEFT JOIN post_tags AS B ON A.post_id = B.post_id
+				WHERE title LIKE '%$searchstring%' OR username LIKE '%$searchstring%'
+				ORDER BY post_id DESC";
 
 			$result = mysqli_query($mysqli, $query);
 

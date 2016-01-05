@@ -1,13 +1,13 @@
-console.log("bla");
-
 var map;
 var markers = [];
 function initializeMap() {
+
 	var mapProp = {
-	center: new google.maps.LatLng(51.508742,-0.120850),
-	zoom: 15,
-	mapTypeId: google.maps.MapTypeId.ROADMAP
+		center: new google.maps.LatLng(51.508742,-0.120850),
+		zoom: 15,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
+
 	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 	addMarkers(map);
@@ -26,11 +26,6 @@ function addMarkers(map){
         	map: map
     	});
 
-    	$(this).click(function(){
-    		map.setCenter(marker.getPosition());
-    		map.setZoom(14);
-    	})
-
     	marker.addListener("click", function(){
     		$(_this).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
@@ -43,6 +38,58 @@ function addMarkers(map){
     	})
 
     	markers.push(marker);
+
+    	$(this).find("#goto").click(function(){
+    		map.setCenter(marker.getPosition());
+    		map.setZoom(14);
+    	})
+
+    	$(this).find("#update").click(function(){
+    		$("#updatemodal").modal();
+
+
+    		$("#title").val( $(_this).data("title"));
+    		$("#caption").val( $(_this).data("caption"));
+
+    		$("#save").click(function(){
+    			console.log("KLICKADE SAVE!");
+
+    			var data = {
+    				id: $(_this).data("id"),
+    				title: $("#title").val(),
+    				caption: $("#caption").val()
+    			};
+    			console.log(data);
+
+    			$.ajax({
+    				type: "POST",
+    				url: "../misc/updatePost.php",
+    				data: data,
+    				success: function(a){
+    					console.log("Success på klient");
+    					$(_this).find(".spanTitle").text(data.title);
+    					$(_this).find(".spanCaption").text(data.caption);
+ 						$("#updatemodal").modal("hide");
+
+
+    				},
+    				error: function(a, b, c){
+    					$("#updatemodal").modal("hide");
+    					console.log("Error på klient");
+
+    				}
+
+    			})
+    		});
+
+    		$("#updatemodal").on("hidden.bs.modal", function(){
+    			$("#save").unbind();
+    		})
+
+    	})
+
+
+
 	})
 
 	var bounds = new google.maps.LatLngBounds();
@@ -52,6 +99,10 @@ function addMarkers(map){
 
 	map.fitBounds(bounds);
 };
+
+//UPDATING A POST
+
+
 
 
 // DESIGN JS FROM HERE AND DOWNWARDS
@@ -67,6 +118,7 @@ function keepMapHeight() {
 	if($(document).width() >= 992 ){
 		var height = window.innerHeight - $("#googleMap").offset().top - 20;
 		$("#googleMap").height(height);
+		var height = window.innerHeight - $("#posts").offset().top - 20;
 		$("#posts").height(height);
 	} else {
 		$("#googleMap").height(window.screen.availHeight-200);

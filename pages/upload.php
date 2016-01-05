@@ -16,17 +16,11 @@ if($detect->isMobile()){
 
 <!DOCTYPE kriz SYSTEM "../dtd/tags.dtd">
 <kriz>
-	<userinfo>
-<?php
-    	include "../misc/isLoggedIn.php";
-    	if( isLoggedIn() ) {
-    		echo("<authorized>true</authorized>");
-    		echo("<username>" . $_COOKIE["username"] . "</username>" );
-    	} else {
-    		echo("<authorized>false</authorized>");
-    	} 
-?>
-    </userinfo>
+	<?php 
+	include("../misc/userinfo.php");
+	userinfo();
+	?>
+
 	<tags>
 
 <?php
@@ -39,5 +33,3 @@ if($detect->isMobile()){
 ?>
 	</tags>
 </kriz>
-
-

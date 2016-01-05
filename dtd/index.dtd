@@ -5,9 +5,10 @@
 <!ENTITY ccedil '&#231;'>
 
 <!ELEMENT kriz (userinfo, posts) >
-	<!ELEMENT userinfo (authorized, username?)>
+	<!ELEMENT userinfo (authorized, username?, role?)>
 		<!ELEMENT authorized (#PCDATA)>
 		<!ELEMENT username (#PCDATA)> 
+		<!ELEMENT role (#PCDATA)> 
 	<!ELEMENT posts (post*) >
 		<!ELEMENT post (title, caption?, imagemedium, imagethumb, location, user, createdat, tags) >
 			<!ATTLIST post id CDATA #REQUIRED >
