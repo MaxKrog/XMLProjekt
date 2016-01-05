@@ -10,6 +10,9 @@
 			<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
 		</head>
 		<body>
+			<script src="./js/jquery.min.js" type="text/javascript"></script>
+			<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+			<script src="./js/upload.js" type="text/javascript"></script>
 
 			<section class="container-fluid">
 
@@ -58,10 +61,6 @@
 					<button type="button" class="btn btn-primary" id="submit" > Upload image </button>
 				</div>
 
-
-
-			<script src="./js/jquery.min.js" type="text/javascript"></script>
-			<script src="./js/upload.js" type="text/javascript"></script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5QnhfpQAZ6ZKD-4KR5gQVn4N3pcIs0cc&amp;callback=createLocationMap"></script>
 			</section>
 		</body>

@@ -44,7 +44,6 @@ function getLocation() {
 }
 
 function enableDrag(){
-	alert("Could not automatically find you position, drag and click on the map instead.");
 
 	positionMap.setOptions({draggable: true});
 	positionMap.addListener("dragend", function(){

@@ -13,6 +13,9 @@
 			</head>
 
 			<body>
+				<script src="./js/jquery.min.js" type="text/javascript"></script>
+				<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+				<script src="./js/index.js"></script>
 
 				<section class="container-fluid">
 
@@ -34,9 +37,6 @@
 						</div>
 					</section>
 				</section>
-
-			<script src="./js/jquery.min.js" type="text/javascript"></script>
-			<script src="./js/index.js"></script>
 			</body>
 		</html>
 
