@@ -69,7 +69,7 @@ function keepMapHeight() {
 		$("#googleMap").height(height);
 		$("#posts").height(height);
 	} else {
-		$("#googleMap").height(500);
+		$("#googleMap").height(window.screen.availHeight-200);
 	}
 }
 
