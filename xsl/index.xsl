@@ -25,7 +25,7 @@
 					<section class="row">
 						<div class="container">
 
-							<div class="col-md-6" >
+							<div class="col-md-6" style="padding-right:0px">
 								<ul class="list-group" id="posts" style="overflow-y:scroll">
 									<!-- TEMPLATE -->
 									<xsl:apply-templates select="posts/post"/>

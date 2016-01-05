@@ -1,4 +1,13 @@
 <?php
+if( isset($_COOKIE["username"]) AND isset($_COOKIE["role"]) ){
+	if( $_COOKIE["role"] != "admin"){
+		echo("You have no business here");
+		die();
+	}
+} else {
+	echo("You have no business here");
+	die();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
 
