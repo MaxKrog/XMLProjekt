@@ -3,5 +3,5 @@
 ._*
 *~
 
-uploadedImages/**
+misc/uploadedImages/**
 !*.gitkeep
