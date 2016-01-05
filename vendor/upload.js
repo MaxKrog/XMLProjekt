@@ -73,47 +73,45 @@ function getTags() {
 	return usedTags;
 }
 
-$("#tags span").click(function(){
-    $(this).toggleClass("label-default");
-    $(this).toggleClass("label-success");
-})
+$(document).ready(function(){
 
-$('#submit').click(function(){
-	console.log("Submit clicked!");
+	$("#tags span").click(function(){
+	    $(this).toggleClass("label-default");
+	    $(this).toggleClass("label-success");
+	})
 
-	var formdata = new FormData();
-	formdata.append("title", $("#title").val());
-	formdata.append("caption", $("#caption").val());
-	formdata.append("image", $("#image")[0].files[0]);
-	formdata.append("lat", userPosition.lat);
-	formdata.append("lng", userPosition.lng);
-	formdata.append("tags", getTags());
-	console.log(formdata);
-    $.ajax({
-        url: './postImage.php',  //Server script to process data
-        type: 'POST',
-        data: formdata,
-		//ajax-settings
-		processData: false,
-		contentType: false,
-	        //Ajax events
-	    success: function( a){
-			console.log(a);
-			window.location = "./index.php";
-		},
-		error: function(a, b, c){ 
-			console.log(a);
-			console.log(b);
-			console.log(c);
-			//window.location = "./auth/login.php";
-			alert("Something went wrong!")
-			
-		}
-        // Form data
-       
+	$('#submit').click(function(){
+		console.log("Submit clicked!");
 
-
-    });
+		var formdata = new FormData();
+		formdata.append("title", $("#title").val());
+		formdata.append("caption", $("#caption").val());
+		formdata.append("image", $("#image")[0].files[0]);
+		formdata.append("lat", userPosition.lat);
+		formdata.append("lng", userPosition.lng);
+		formdata.append("tags", getTags());
+		console.log(formdata);
+	    $.ajax({
+	        url: '../misc/postImage.php',  //Server script to process data
+	        type: 'POST',
+	        data: formdata,
+			//ajax-settings
+			processData: false,
+			contentType: false,
+		        //Ajax events
+		    success: function( a){
+				console.log(a);
+				window.location = "./index.php";
+			},
+			error: function(a, b, c){ 
+				console.log(a);
+				console.log(b);
+				console.log(c);
+				alert("Something went wrong!")
+				
+			}
+	    });
+	});
 });
 
 

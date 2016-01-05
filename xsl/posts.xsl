@@ -5,8 +5,8 @@
 		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}">
        		<div class="media">
        			<div class="media-left">
-       				<a href=".{imagemedium}" target="_new">
-       					<img class="media-object" src=".{imagethumb}"/>
+       				<a href="{imagemedium}" target="_new">
+       					<img class="media-object" src="{imagethumb}"/>
        				</a>
        			</div>
        			<div class="media-body">

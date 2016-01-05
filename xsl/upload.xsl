@@ -7,12 +7,12 @@
 		<head>
 			<title>Krizfeed </title>
 			<meta charset="UTF-8" />
-			<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+			<link rel="stylesheet" type="text/css" href="../vendor/bootstrap.min.css"/>
 		</head>
 		<body>
-			<script src="./js/jquery.min.js" type="text/javascript"></script>
-			<script src="./js/bootstrap.min.js" type="text/javascript"></script>
-			<script src="./js/upload.js" type="text/javascript"></script>
+			<script src="../vendor/jquery.min.js" type="text/javascript"></script>
+			<script src="../vendor/bootstrap.min.js" type="text/javascript"></script>
+			<script src="../vendor/upload.js" type="text/javascript"></script>
 
 			<section class="container-fluid">
 
@@ -24,7 +24,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="form-horizontal" id="imageForm" enctype="multipart/form-data" method="POST" action="../imageupload.php" >
+					<form class="form-horizontal" id="imageForm" enctype="multipart/form-data" method="POST" action="./upload.php" >
 						<section class="form-group">	
 							<label class="col-sm-2 control-label">Title</label>
 							<div class="col-sm-10">

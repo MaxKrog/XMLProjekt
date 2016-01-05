@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	header('Content-Type: application/json');
 
 
-	include "./database/connection.php";
+	include "../database/connection.php";
 	$result = $mysqli->query("SELECT username, password, role FROM users;");
 
 	$JSON = array();
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$password = $_POST["password"];
 	$role = $_POST["role"];
 
-	include "./database/connection.php";
+	include "../database/connection.php";
 	$query = "INSERT INTO users(username, password, role) VALUES('$username', '$password', '$role');";
 
 	if(!$mysqli->query($query)){
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$password = $_POST["password"];
 	$role = $_POST["role"];
 
-	include "./database/connection.php";
+	include "../database/connection.php";
 	if(!$mysqli->query("UPDATE users SET password = '$password', role = '$role' WHERE username = '$username';")){
 		echo("Something went wrong");
 		die();
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	$username = $_POST["username"];
 
-	include "./database/connection.php";
+	include "../database/connection.php";
 	if(!$mysqli->query("DELETE FROM users WHERE username = '$username';")){
 		echo("Something went wrong");
 		die();

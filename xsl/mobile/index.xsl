@@ -6,13 +6,18 @@
 				<title>Krizfeed </title>
 				<meta charset="UTF-8"/>
 				<meta name="viewport" content="width=device-width initial-scale=1" />
-				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+				<link rel="stylesheet" type="text/css" href="../vendor/bootstrap.min.css"/>
 
 				<script src="http://maps.googleapis.com/maps/api/js"></script>
 
 			</head>
 
 			<body style="padding-top:70px">
+
+				<script src="../vendor/jquery.min.js" type="text/javascript"></script>
+				<script src="../vendor/bootstrap.min.js"/>
+				<script src="../vendor/index.js"></script>
+
 
 				<section class="container-fluid">
 
@@ -35,9 +40,7 @@
 					</section>
 				</section>
 
-			<script src="./js/jquery.min.js" type="text/javascript"></script>
-			<script src="./js/index.js"></script>
-			<script src="./js/bootstrap.min.js"/>
+
 			</body>
 		</html>
 

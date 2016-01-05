@@ -3,22 +3,22 @@
 
 <?php
 /* Detect if mobile and use mobile stylesheet or desktop stylesheet */
-include("./Mobile_Detect.php");
+include("../misc/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 
 if($detect->isMobile()){
-	print '<?xml-stylesheet type="text/xsl" href="xsl/mobile/upload.xsl"?>';
+	print '<?xml-stylesheet type="text/xsl" href="../xsl/mobile/upload.xsl"?>';
 } else {
-	print '<?xml-stylesheet type="text/xsl" href="xsl/upload.xsl"?>';
+	print '<?xml-stylesheet type="text/xsl" href="../xsl/upload.xsl"?>';
 }
 ?>
 
 
-<!DOCTYPE kriz SYSTEM "./dtd/tags.dtd">
+<!DOCTYPE kriz SYSTEM "../dtd/tags.dtd">
 <kriz>
 	<userinfo>
 <?php
-    	include "./auth/isLoggedIn.php";
+    	include "../misc/isLoggedIn.php";
     	if( isLoggedIn() ) {
     		echo("<authorized>true</authorized>");
     		echo("<username>" . $_COOKIE["username"] . "</username>" );
@@ -30,7 +30,7 @@ if($detect->isMobile()){
 	<tags>
 
 <?php
-		include "./database/connection.php";
+		include "../database/connection.php";
 
 		$result = $mysqli->query("SELECT tag FROM tags;");
 		while($row = $result->fetch_row()){

@@ -7,5 +7,5 @@ if (isset($_COOKIE['username'])) {
 	unset($_COOKIE['role']);
 }
 
-header("Location: ../index.php");
+header("Location: ./index.php");
 die();

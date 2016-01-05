@@ -1,6 +1,6 @@
 <?php
 
-include "./auth/isLoggedIn.php";
+include "./isLoggedIn.php";
 include "./imageprocessing.php";
 
 if( isLoggedIn() ) {
@@ -12,8 +12,9 @@ if( isLoggedIn() ) {
 		createThumb(getcwd() . $filename_medium, getcwd() . $filename_thumb);
 		createMedium(getcwd() . $filename_medium, getcwd() . $filename_medium);
 
-		$image_medium = $filename_medium;
-		$image_thumb = $filename_thumb;
+
+		$image_medium = "../misc" . $filename_medium ;
+		$image_thumb = "../misc" . $filename_thumb;
 		$title = $_POST["title"];
 		$caption = $_POST["caption"];
 		$lat = $_POST["lat"];
@@ -25,7 +26,7 @@ if( isLoggedIn() ) {
 			(image_medium, image_thumb, title, caption, lat, lng, username, createdAt)
 			VALUES('$image_medium','$image_thumb', '$title', '$caption', $lat, $lng, '$username', '$createdAt');";
 			
-		include "./database/connection.php";
+		include "../database/connection.php";
 		
 		if(!$mysqli->query($query)){
 			
@@ -34,9 +35,9 @@ if( isLoggedIn() ) {
 		} elseif( isset($_POST["tags"]) && strlen($_POST["tags"]) > 0 ) {
 			//Connect post to tags
 			$post_id = $mysqli->insert_id;
-			echo($_POST["tags"]);
+
 			$tags = explode(",", $_POST["tags"]);
-			echo($tags);
+
 
 			foreach($tags as $tag){
 				$mysqli->query("INSERT INTO post_tags VALUES($post_id, '$tag');");
@@ -55,6 +56,3 @@ if( isLoggedIn() ) {
 	header('X-PHP-Response-Code: 401', true, 401);
 }
 
-
-
-?>

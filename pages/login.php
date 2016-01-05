@@ -1,10 +1,10 @@
 <?php
 
 //WHEN LOGGED IN username-cookie is set to the username. Not very secure.
-include "./isLoggedIn.php";
+include "../misc/isLoggedIn.php";
 
 if( isLoggedIn() ) { // User allready is logged in
-	header("Location: ../index.php");
+	header("Location: ./index.php");
 	die();
 }
 $failedLogin = False;
@@ -20,7 +20,7 @@ if( isset($_POST["username"]) && isset($_POST["password"]) ){
 		//SÄTT COOKIE
 		setcookie("username", $username, 0, "/");
 		setcookie("role", $row[2], 0, "/");
-		header("Location: ../index.php");
+		header("Location: ./index.php");
 		die();
 	} else {
 		$failedLogin = True;
@@ -34,7 +34,7 @@ if( isset($_POST["username"]) && isset($_POST["password"]) ){
 		<title>Krizfeed </title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../vendor/bootstrap.min.css">
 	</head>
 	<body>
 
@@ -50,7 +50,7 @@ if( isset($_POST["username"]) && isset($_POST["password"]) ){
 					<input type="password" class="form-control" id="password" name="password">
 				</div>
 
-				<button class="btn btn-warning"> <a href="../index.php">Back</a></button>
+				<button class="btn btn-warning"> <a href="./index.php">Back</a></button>
 				<button type="submit" class="btn btn-success">Login</button>
 			</form>
 	
@@ -58,7 +58,7 @@ if( isset($_POST["username"]) && isset($_POST["password"]) ){
 
 
 
-		<script src="../js/jquery.min.js" type="text/javascript"></script>
+		<script src="../vendor/jquery.min.js" type="text/javascript"></script>
 
 	</body>
 </html>

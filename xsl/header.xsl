@@ -12,20 +12,19 @@
 					<ul class="nav navbar-nav navbar-right">		
 						<xsl:if test="authorized = 'false'">
 
-							<li><a href="./auth/login.php"> Sign in  </a></li>
+							<li><a href="./login.php"> Sign in  </a></li>
 							
 						</xsl:if>
 						<xsl:if test="authorized = 'true'">
 
 							<li><a href="index.php"> Frontpage  </a></li>
-							<li><a href="myposts.php"> My posts  </a></li>
 							<li><a href="upload.php"> Upload post  </a></li>
 							<li id="adminpanel"><a href="#"> User administration </a></li>
 							
 
 							<li><p class="navbar-text" ><xsl:value-of select="username" /></p></li> 
 
-							<li><a href="./auth/logout.php"> Sign out  </a></li>
+							<li><a href="./logout.php"> Sign out  </a></li>
 						</xsl:if>
 					</ul>
 				</div>
@@ -66,7 +65,7 @@
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
-			<script src="./js/admin.js"></script>
+			<script src="../vendor/admin.js"></script>
 		</xsl:if>
 
 	</xsl:template>

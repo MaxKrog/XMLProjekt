@@ -12,7 +12,7 @@
 							<ul class="nav navbar-nav navbar-right">		
 								<xsl:if test="authorized = 'false'">
 
-									<li><a href="./auth/login.php"> Sign in  </a></li>
+									<li><a href="./login.php"> Sign in  </a></li>
 									
 								</xsl:if>
 								<xsl:if test="authorized = 'true'">
@@ -23,7 +23,7 @@
 											<li><a href="upload.php">Upload image</a></li>
 											<li role="separator" class="divider"></li>
 											<li><a href="#"><xsl:value-of select="username"/></a></li>
-											<li><a href="./auth/logout.php"> Sign out  </a></li>
+											<li><a href="./logout.php"> Sign out  </a></li>
 										</ul>
 									</li>	
 								</xsl:if>
