@@ -12,8 +12,12 @@
        			<div class="media-body">
        				<h4 class="media-heading"> <xsl:value-of select="title" /> </h4>
        				<xsl:value-of select="caption" />
-       				
-       				<br/><div class="well well-sm"><xsl:apply-templates select="tags/tag" /></div>
+
+       				<br/>
+              <div class="well well-sm">
+                Posted by: <xsl:apply-templates select="user" /><br/>
+                <xsl:apply-templates select="tags/tag" />
+              </div>
        				
        			</div>
        			

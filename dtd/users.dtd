@@ -1,2 +1,9 @@
-<!ELEMENT users (user*) >
-	<!ELEMENT user (#PCDATA) >
+<!ELEMENT kriz (userinfo, tags) >
+	<!ELEMENT userinfo (authorized, username?)>
+		<!ELEMENT authorized (#PCDATA)>
+		<!ELEMENT username (#PCDATA)> 
+	<!ELEMENT users (user*) >
+		<!ELEMENT user (username, password, role) >
+			<!ELEMENT username (#PCDATA) >
+			<!ELEMENT password (#PCDATA) >
+			<!ELEMENT role (#PCDATA) >

@@ -18,7 +18,9 @@
 						<xsl:if test="authorized = 'true'">
 
 							<li><a href="index.php"> Frontpage  </a></li>
-							<li><a href="upload.php"> Upload image  </a></li>
+							<li><a href="myposts.php"> My posts  </a></li>
+							<li><a href="upload.php"> Upload post  </a></li>
+							
 
 							<li><p class="navbar-text" ><xsl:value-of select="username" /></p></li> 
 

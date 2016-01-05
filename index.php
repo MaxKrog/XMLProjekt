@@ -11,7 +11,7 @@
     		echo("<username>" . $_COOKIE["username"] . "</username>" );
     	} else {
     		echo("<authorized>false</authorized>");
-    	} 
+    	}
 	?>
     </userinfo>
 	<posts>

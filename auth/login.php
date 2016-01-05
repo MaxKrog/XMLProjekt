@@ -9,16 +9,17 @@ if( isLoggedIn() ) { // User allready is logged in
 }
 $failedLogin = False;
 
-if(isset($_POST["username"]) && isset($_POST["password"]) ){
-	$username = $_POST["username"];
-	$password = $_POST["password"];
+if( isset($_POST["username"]) && isset($_POST["password"]) ){
 	include "../database/connection.php";
-	$result = $mysqli->query("SELECT username, password FROM users WHERE username = '$username';");
+	$username = $_POST["username"];
+	$password = $_POST["password"];	
+	$result = $mysqli->query("SELECT username, password, role FROM users WHERE username = '$username';");
 	$row = $result->fetch_row();
 	
 	if($password == $row[1]){
 		//SÄTT COOKIE
 		setcookie("username", $username, 0, "/");
+		setcookie("role", $row[2], 0, "/");
 		header("Location: ../index.php");
 		die();
 	} else {
