@@ -1,10 +1,20 @@
-<?php
-header("Content-type: text/xml; charset=utf-8");
-?>
+<?php header("Content-type: text/xml; charset=utf-8"); ?>
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="xsl/upload.xsl"?>
-<!DOCTYPE kriz SYSTEM "./dtd/tags.dtd">
 
+<?php
+/* Detect if mobile and use mobile stylesheet or desktop stylesheet */
+include("./Mobile_Detect.php");
+$detect = new Mobile_Detect();
+
+if($detect->isMobile()){
+	print '<?xml-stylesheet type="text/xsl" href="xsl/mobile/upload.xsl"?>';
+} else {
+	print '<?xml-stylesheet type="text/xsl" href="xsl/upload.xsl"?>';
+}
+?>
+
+
+<!DOCTYPE kriz SYSTEM "./dtd/tags.dtd">
 <kriz>
 	<userinfo>
 <?php
