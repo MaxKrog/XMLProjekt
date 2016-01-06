@@ -1,19 +1,18 @@
 <?php
 if( isset($_COOKIE["username"]) AND isset($_COOKIE["role"]) ){
 	if( $_COOKIE["role"] != "admin"){
-		echo("You have no business here");
-		die();
+		header('HTTP/1.1 401 Unauthorized', true, 401);
+		die("You have no business here");
 	}
 } else {
-	echo("You have no business here");
-	die();
+		header('HTTP/1.1 401 Unauthorized', true, 401);	
+		die("You have no business here");
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
 
 	header('Content-Type: application/json');
-
-
+	
 	include "../database/connection.php";
 	$result = $mysqli->query("SELECT username, password, role FROM users;");
 
@@ -25,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	}
 
 	echo(json_encode($JSON));
+	die();
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST["type"] === "POST") { //POST
 	//Some admin wants to create a new user
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	if(!$mysqli->query($query)){
 		//SOME ERROR
-		echo("Error");
+		header('HTTP/1.1 500 Internal Server Error', true, 500);
 		die();
 	} else {
 		echo("Successfully inserted!");
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	include "../database/connection.php";
 	if(!$mysqli->query("UPDATE users SET password = '$password', role = '$role' WHERE username = '$username';")){
-		echo("Something went wrong");
+		header('HTTP/1.1 500 Internal Server Error', true, 500);
 		die();
 	} else {
 		echo("Successfully updated on server");
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	include "../database/connection.php";
 	if(!$mysqli->query("DELETE FROM users WHERE username = '$username';")){
-		echo("Something went wrong");
+		header('HTTP/1.1 500 Internal Server Error', true, 500);
 		die();
 	} else {
 		echo("Successfully deleted on server");

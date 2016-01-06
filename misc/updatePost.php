@@ -9,8 +9,8 @@ if( isLoggedIn() ) {
 	$post_id = $_POST['id'];
 
 
-	$title = $_POST['title'];
-	$caption = $_POST['caption'];
+	$title = htmlspecialchars($_POST['title']);
+	$caption = htmlspecialchars($_POST['caption']);
 
 	$query = "UPDATE posts SET title='$title', caption='$caption' WHERE post_id = $post_id";
 

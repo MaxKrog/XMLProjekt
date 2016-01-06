@@ -1,9 +1,17 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+	<xsl:variable name="usernameoradmin"> <!-- Takes value 'admin' if admin, 'username' if logged in but not admin '' if not logged in. -->
+		<xsl:choose>
+			<xsl:when test="kriz/userinfo/role = 'admin'">admin</xsl:when>
+			<xsl:when test="kriz/userinfo/username"><xsl:value-of select="/kriz/userinfo/username" /></xsl:when>
+			<xsl:otherwise></xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+
 	<xsl:template match="kriz">
 		<html>
 			<head>
-				<title>Krizfeed </title>
+				<title>Krizfeed</title>
 				<meta charset="UTF-8"/>
 				<meta name="viewport" content="width=device-width initial-scale=1" />
 
@@ -37,7 +45,9 @@
 
 								<ul class="list-group" id="posts" style="overflow-y:scroll">
 									<!-- TEMPLATE -->
-									<xsl:apply-templates select="posts/post"/>
+									<xsl:apply-templates select="posts/post">
+										<xsl:with-param name="username" select="userinfo/u" />
+									</xsl:apply-templates>
 								</ul>
 							</div>
 							<div class="col-md-6" id="googleMap">
@@ -47,42 +57,8 @@
 					</section>
 				</section>
 
-			<div class="modal" tabindex="-1" role="dialog" id="updatemodal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-							<h4 class="modal-title">Update post</h4>
-						</div>
-
-						<div class="modal-body">
-
-							<form class="form-horizontal" id="imageForm">
-								<section class="form-group">	
-									<label class="col-sm-2 control-label">Title</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="title" name="title"/>
-									</div>
-								</section>
-
-								<section class="form-group">
-									<label for="inputPassword3" class="col-sm-2 control-label">Caption</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="caption"/>
-									</div>
-								</section>
-							</form>
-
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
-							<button type="button" class="btn btn-success" id="save">Save Changes</button>
-						</div>
-
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+			<!-- IMPORTING UPDATEMODAL -->
+			<xsl:call-template name="updatemodal" />
 
 			</body>
 		</html>
@@ -90,6 +66,7 @@
 	</xsl:template>
 
 	<!-- IMPORTING TEMPLATES -->
+	<xsl:include href="updatemodal.xsl" />
 	<xsl:include href="header.xsl" />
 	<xsl:include href="posts.xsl" />
     

@@ -15,8 +15,8 @@ if( isLoggedIn() ) {
 
 		$image_medium = "../misc" . $filename_medium ;
 		$image_thumb = "../misc" . $filename_thumb;
-		$title = $_POST["title"];
-		$caption = $_POST["caption"];
+		$title = htmlspecialchars($_POST["title"]);
+		$caption = htmlspecialchars($_POST["caption"]);
 		$lat = $_POST["lat"];
 		$lng = $_POST["lng"];
 		$username = $_COOKIE["username"];

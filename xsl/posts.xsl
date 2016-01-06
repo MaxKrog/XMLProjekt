@@ -6,16 +6,18 @@
        		<div class="media">
        			<div class="media-left">
        				<a href="{imagemedium}" target="_new">
-       					<img class="media-object" src="{imagethumb}"/>
+       					<img class="media-object img-rounded" src="{imagethumb}"/>
        				</a>
        			</div>
        			<div class="media-body">
 
        				 <h4 class="media-heading">
-                        <span class="spanTitle" > <xsl:value-of select="title" /> </span>
+                        <span class="spanTitle center-text" > <xsl:value-of select="title" /></span>
                        
                         <span id="goto" style="cursor: pointer" class=" pull-right glyphicon glyphicon-pushpin"></span>
-                        <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px"></span>
+                        <xsl:if test="$usernameoradmin = 'admin' or $usernameoradmin = user">
+                          <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px"></span>
+                        </xsl:if>
                         
                     </h4> 
 

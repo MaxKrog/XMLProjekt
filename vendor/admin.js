@@ -41,7 +41,8 @@ function updateTable(users){
 				success: function(a){
 					console.log("Success delete on client");
 					console.log(a);
-					reset();
+					$userRow.remove();
+					//reset();
 				},
 				error: function(a, b, c) {
 					console.log(a);
@@ -65,12 +66,12 @@ function updateTable(users){
 				success: function(a){
 					console.log("Success update on client");
 					console.log(a);
-					reset();
 				},
 				error: function(a, b, c) {
 					console.log(a);
 					console.log(b);
 					console.log(c);
+					alert("Failed to update");
 				}
 			})
 		})
@@ -126,6 +127,6 @@ $("#add").click(function(){
 })
 
 $("#adminpanel").click(function(){
-	$("#modal").modal();
+	$("#adminmodal").modal();
 	reset();
 })
