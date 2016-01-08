@@ -1,31 +1,48 @@
 
 <?php
 include "./isLoggedIn.php";
-include "../database/connection.php";
 
-if( isLoggedIn() ) {
-	
+
+if( !isLoggedIn() ) {
+	header('HTTP/1.1 401 Unauthorized', true, 401);	
+	die("You have no business here");
+} else {
+	include "../database/connection.php";
+
 	$username = $_COOKIE["username"];
+	$role = $_COOKIE["role"];
 	$post_id = $_POST['id'];
 
 
-	$title = htmlspecialchars($_POST['title']);
-	$caption = htmlspecialchars($_POST['caption']);
+	if(!$role == "admin"){
+		$query = "SELECT username FROM posts WHERE post_id = '$post_id';";
+		$result = mysqli_query($mysqli, $query);
+		$line = $result->fetch_object();
+		if(!$username == $line->username){
+				header('HTTP/1.1 401 Unauthorized', true, 401);	
+				die("You have no business here");
+		}
+	}
 
-	$query = "UPDATE posts SET title='$title', caption='$caption' WHERE post_id = $post_id";
+	//AT THIS POINT WE KNOW THE USER IS AUTHORIZED TO CHANGE THE POST.
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST["type"] === "PUT") { //USER WANTS TO UPDATE INFO
 
-	$retval = mysqli_query($mysqli, $query);
+		$title = htmlspecialchars($_POST['title']);
+		$caption = htmlspecialchars($_POST['caption']);
 
-	if(! $retval ) {
-		die('Could not update data: '.$mysqli->error);
-	} else {
-		echo("Funkade på servern!");
+		$query = "UPDATE posts SET title='$title', caption='$caption' WHERE post_id = $post_id";
+
+		mysqli_query($mysqli, $query);
 		die();
+
+	} elseif( $_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST["type"] === "DELETE"){
+
+		$query = "DELETE FROM posts WHERE post_id = '$post_id';";
+		$result = mysqli_query($mysqli, $query);
+		echo("Success delete on server");
+
 	}
 
 }
-
-$mysqli->close();
-
 ?>
 

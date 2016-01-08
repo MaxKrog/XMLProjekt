@@ -16,7 +16,7 @@
                        
                         <span id="goto" style="cursor: pointer" class=" pull-right glyphicon glyphicon-pushpin"></span>
                         <xsl:if test="$usernameoradmin = 'admin' or $usernameoradmin = user">
-                          <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px"></span>
+                          <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px;cursor:pointer"></span>
                         </xsl:if>
                         
                 </h5> 

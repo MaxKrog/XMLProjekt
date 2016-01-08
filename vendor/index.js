@@ -47,6 +47,11 @@ function addMarkers(map){
     	$(this).find("#update").click(function(){
     		$("#updatemodal").modal();
 
+            $("#updatemodal").on("hidden.bs.modal", function(){
+                $("#save").unbind();
+                $("#delete").unbind();
+            })
+
 
     		$("#title").val( $(_this).data("title"));
     		$("#caption").val( $(_this).data("caption"));
@@ -57,7 +62,8 @@ function addMarkers(map){
     			var data = {
     				id: $(_this).data("id"),
     				title: $("#title").val(),
-    				caption: $("#caption").val()
+    				caption: $("#caption").val(),
+                    type: "PUT"
     			};
     			console.log(data);
 
@@ -66,6 +72,7 @@ function addMarkers(map){
     				url: "../misc/updatePost.php",
     				data: data,
     				success: function(a){
+                        console.log(a);
     					console.log("Success på klient");
     					$(_this).find(".spanTitle").text(data.title);
     					$(_this).find(".spanCaption").text(data.caption);
@@ -74,6 +81,9 @@ function addMarkers(map){
 
     				},
     				error: function(a, b, c){
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);
     					$("#updatemodal").modal("hide");
     					console.log("Error på klient");
 
@@ -82,9 +92,27 @@ function addMarkers(map){
     			})
     		});
 
-    		$("#updatemodal").on("hidden.bs.modal", function(){
-    			$("#save").unbind();
-    		})
+            $("#delete").click(function(){
+
+                $.ajax({
+                    type: "POST",
+                    url: "../misc/updatePost.php",
+                    data: {type: "DELETE", id: $(_this).data("id")},
+                    success: function(a){
+                        console.log("Success delete on client");
+                        $(_this).remove();
+                        marker.setMap(null);
+                        $("#updatemodal").modal("hide");
+                        console.log(a);
+                    },
+                    error: function(){
+                        console.log("Error delete on client");
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);
+                    }
+                })
+            });
 
     	})
 

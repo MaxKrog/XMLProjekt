@@ -32,6 +32,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+            <button type="button" class="btn btn-danger" id="delete" data-dismiss="modal" >Delete</button>
             <button type="button" class="btn btn-success" id="save">Save Changes</button>
           </div>
 

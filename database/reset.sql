@@ -31,7 +31,7 @@ CREATE TABLE tags (
 );
 
 CREATE TABLE post_tags (
-	post_id integer NOT NULL references posts(post_id),
+	post_id integer NOT NULL references posts(post_id) ON DELETE CASCADE,
 	tag varchar(20) NOT NULL references tags(tag),
 	Constraint post_tags_pkey Primary Key(post_id, tag)
 );
