@@ -12,6 +12,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="index.php"> Frontpage  </a></li>
 						<li><a href="gallery.php"> Gallery  </a></li>		
+						<li><a href="map.php"> Map </a></li>	
 						<xsl:if test="authorized = 'false'">
 
 							<li><a href="./login.php"> Sign in  </a></li>

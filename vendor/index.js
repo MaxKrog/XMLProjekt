@@ -69,7 +69,7 @@ function addMarkers(map){
 
     			$.ajax({
     				type: "POST",
-    				url: "../misc/updatePost.php",
+    				url: "../misc/postAPI.php",
     				data: data,
     				success: function(a){
                         console.log(a);
@@ -96,7 +96,7 @@ function addMarkers(map){
 
                 $.ajax({
                     type: "POST",
-                    url: "../misc/updatePost.php",
+                    url: "../misc/postAPI.php",
                     data: {type: "DELETE", id: $(_this).data("id")},
                     success: function(a){
                         console.log("Success delete on client");

@@ -1,5 +1,32 @@
-
 <?php
+include "../database/connection.php";
+
+if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
+	header('Content-Type: application/json');
+
+	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng FROM posts;";
+
+	$result = mysqli_query($mysqli, $query);
+
+	$JSON = array();
+	while($line = $result->fetch_object()){
+		$UserJSON = array(
+			"title" => $line->title,
+			"caption" => $line->caption,
+			"image_thumb" => $line->image_thumb,
+			"image_medium" => $line->image_medium,
+			"lat" => $line->lat,
+			"lng" => $line->lng);
+
+		$JSON[] = $UserJSON;
+	}
+
+	echo(json_encode($JSON));
+	die();
+
+}
+
+
 include "./isLoggedIn.php";
 
 
@@ -7,7 +34,6 @@ if( !isLoggedIn() ) {
 	header('HTTP/1.1 401 Unauthorized', true, 401);	
 	die("You have no business here");
 } else {
-	include "../database/connection.php";
 
 	$username = $_COOKIE["username"];
 	$role = $_COOKIE["role"];

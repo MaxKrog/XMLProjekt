@@ -20,7 +20,8 @@
 										<ul class="dropdown-menu">
 											<li><a href="index.php">Frontpage</a></li>
 											<li><a href="upload.php">Upload image</a></li>
-											<li><a href="gallery.php"> Gallery  </a></li>	
+											<li><a href="gallery.php"> Gallery  </a></li>
+											<li><a href="map.php"> Map </a></li>	
 											<li role="separator" class="divider"></li>
 											<li id="adminpanel"><a href="#"> User administration </a></li>
 											<li><a href="#"><xsl:value-of select="username"/></a></li>
