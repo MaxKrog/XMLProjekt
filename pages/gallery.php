@@ -8,7 +8,7 @@ include("../misc/Mobile_Detect.php");
 $detect = new Mobile_Detect();
 
 if($detect->isMobile()){
-	print '<?xml-stylesheet type="text/xsl" href="../xsl/mobile/index.xsl"?>';
+	print '<?xml-stylesheet type="text/xsl" href="../xsl/mobile/gallery.xsl"?>';
 } else {
 	print '<?xml-stylesheet type="text/xsl" href="../xsl/gallery.xsl"?>';
 }

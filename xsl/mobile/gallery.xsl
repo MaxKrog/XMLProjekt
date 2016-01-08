@@ -5,12 +5,12 @@
 			<head>
 				<title>Krizfeed </title>
 				<meta charset="UTF-8"/>
-				<meta name="viewport" content="width=device-width initial-scale=1" />
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no " />
 
 				<link rel="stylesheet" type="text/css" href="../vendor/bootstrap.min.css"/>
 			</head>
 
-			<body>
+			<body style="padding-top:70px">
 				<script src="../vendor/jquery.min.js" type="text/javascript"></script>
 				<script src="../vendor/bootstrap.min.js" type="text/javascript"></script>
 				<script src="../vendor/gallery.js" type="text/javascript"></script>
