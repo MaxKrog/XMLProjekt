@@ -83,6 +83,16 @@ $(document).ready(function(){
 	$('#submit').click(function(){
 		console.log("Submit clicked!");
 
+		var image = $("#image")[0].files[0];
+
+		if(typeof image === "undefined"){
+			alert("You must choose an image before uploading");
+			return;
+		} else if (!image.name.match(/\.(png)$/)){
+			alert("The image must be in png format!");
+			return;
+		}
+
 		var formdata = new FormData();
 		formdata.append("title", $("#title").val());
 		formdata.append("caption", $("#caption").val());
@@ -90,7 +100,7 @@ $(document).ready(function(){
 		formdata.append("lat", userPosition.lat);
 		formdata.append("lng", userPosition.lng);
 		formdata.append("tags", getTags());
-		console.log(formdata);
+
 	    $.ajax({
 	        url: '../misc/postImage.php',  //Server script to process data
 	        type: 'POST',
@@ -107,7 +117,7 @@ $(document).ready(function(){
 				console.log(a);
 				console.log(b);
 				console.log(c);
-				alert("Something went wrong!")
+				alert("Something went wrong with your upload on the server-side. Description: \n" + c);
 				
 			}
 	    });

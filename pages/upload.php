@@ -1,4 +1,12 @@
-<?php header("Content-type: text/xml; charset=utf-8"); ?>
+<?php
+	include "../misc/isLoggedIn.php";
+	if(!isLoggedIn()){
+		header("Location: ./login.php");
+		die();
+	}
+
+
+	header("Content-type: text/xml; charset=utf-8"); ?>
 <?xml version="1.0" encoding="utf-8"?>
 
 <?php
