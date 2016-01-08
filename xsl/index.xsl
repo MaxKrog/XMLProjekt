@@ -43,7 +43,7 @@
 									<input type="text" class="form-control" name="searchstring"/>
 								</form><!-- /input-group -->
 
-								<ul class="list-group" id="posts" style="overflow-y:scroll">
+								<ul class="list-group" id="posts" style="overflow-y:scroll;">
 									<!-- TEMPLATE -->
 									<xsl:apply-templates select="posts/post">
 										<xsl:with-param name="username" select="userinfo/u" />

@@ -2,16 +2,16 @@
 
 
 	<xsl:template match="posts/post">
-		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}" data-title="{title}" data-id="{@id}" data-caption="{caption}">
-       		<div class="media">
+		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}" data-title="{title}" data-id="{@id}" data-caption="{caption}" style="border-style:none">
+       		<div class="media img-rounded" style="box-shadow: 5px 5px 10px grey; padding: 10px 10px 10px 10px; ">
        			<div class="media-left">
        				<a href="{imagemedium}" target="_new">
        					<img class="media-object img-rounded" src="{imagethumb}"/>
        				</a>
        			</div>
-       			<div class="media-body">
+       			<div class="media-body" style="">
 
-       				 <h4 class="media-heading">
+       				 <h5 class="media-heading">
                         <span class="spanTitle center-text" > <xsl:value-of select="title" /></span>
                        
                         <span id="goto" style="cursor: pointer" class=" pull-right glyphicon glyphicon-pushpin"></span>
@@ -19,15 +19,13 @@
                           <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px"></span>
                         </xsl:if>
                         
-                    </h4> 
+                </h5> 
 
-       				<span class="spanCaption"><xsl:value-of select="caption" /> </span>
+       				<p class="spanCaption"><xsl:value-of select="caption" /> </p>
 
-       				<br/>
-              <div class="well well-sm">
-                Posted by: <xsl:apply-templates select="user" /><br/>
-                <xsl:apply-templates select="tags/tag" />
-              </div>
+              
+                <i style="font-size: 10px">Uploaded by: <xsl:value-of select="user" /> at <xsl:value-of select="createdat"/><br/>
+                <xsl:apply-templates select="tags/tag" /></i>
        				
        			</div>
        			
@@ -37,7 +35,7 @@
     </xsl:template>
 
     <xsl:template match="tag">
-		<span class="label label-default" style="cursor: pointer;"><xsl:value-of select="." /></span>
-	</xsl:template>
+		  <xsl:value-of select="." />
+    </xsl:template>
 
 </xsl:stylesheet>
