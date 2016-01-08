@@ -40,7 +40,7 @@
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="submit">Go!</button>
 									</span>
-									<input type="text" class="form-control" name="searchstring"/>
+									<input type="text" class="form-control" name="searchstring" placeholder="search tags, users, text ..."/>
 								</form><!-- /input-group -->
 
 								<ul class="list-group" id="posts" style="overflow-y:scroll;">

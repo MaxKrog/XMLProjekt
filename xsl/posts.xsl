@@ -24,8 +24,10 @@
        				<p class="spanCaption"><xsl:value-of select="caption" /> </p>
 
               
-                <i style="font-size: 10px">Uploaded by: <xsl:value-of select="user" /> at <xsl:value-of select="createdat"/><br/>
-                <xsl:apply-templates select="tags/tag" /></i>
+                <i style="font-size: 10px">
+                  Uploaded by: <b><xsl:value-of select="user" /></b> at <xsl:value-of select="createdat"/><br/>
+                  tags: <xsl:apply-templates select="tags/tag" />
+                </i>
        				
        			</div>
        			
@@ -35,7 +37,7 @@
     </xsl:template>
 
     <xsl:template match="tag">
-		  <xsl:value-of select="." />
+		  <xsl:value-of select="." /><xsl:text> </xsl:text>
     </xsl:template>
 
 </xsl:stylesheet>
