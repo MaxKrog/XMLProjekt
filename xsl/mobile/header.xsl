@@ -22,6 +22,7 @@
 											<li><a href="index.php">Frontpage</a></li>
 											<li><a href="upload.php">Upload image</a></li>
 											<li role="separator" class="divider"></li>
+											<li id="adminpanel"><a href="#"> User administration </a></li>
 											<li><a href="#"><xsl:value-of select="username"/></a></li>
 											<li><a href="./logout.php"> Sign out  </a></li>
 										</ul>
@@ -33,6 +34,43 @@
 				</div>
 			</nav>
 		</header>
+			<!-- MODAL -->
+		<xsl:if test="authorized = 'true'">
+						<div class="modal" tabindex="-1" role="dialog" id="modal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+							<h4 class="modal-title">User Administration</h4>
+						</div>
+
+						<div class="modal-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th> Username </th>
+										<th> Password </th>
+										<th> Admin </th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody id="tbody">
+
+								</tbody>
+							</table>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" id="add">Add new user</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			<script src="../vendor/admin.js"></script>
+		</xsl:if>
 	</xsl:template>
 
 
