@@ -4,7 +4,7 @@ include "../database/connection.php";
 if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
 	header('Content-Type: application/json');
 
-	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng FROM posts;";
+	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng, username FROM posts;";
 
 	$result = mysqli_query($mysqli, $query);
 
@@ -16,7 +16,8 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
 			"image_thumb" => $line->image_thumb,
 			"image_medium" => $line->image_medium,
 			"lat" => $line->lat,
-			"lng" => $line->lng);
+			"lng" => $line->lng,
+			"username" => $line->username);
 
 		$JSON[] = $UserJSON;
 	}

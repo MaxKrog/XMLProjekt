@@ -41,11 +41,24 @@ function addMarkers(data){
         	map: map
     	});
 
-    	
+
+
+	var infocontent = '<div class="media" style="width:300px">';
+		var infocontent = infocontent +  '<div class="media-left">';
+			var infocontent = infocontent +  '<a href="'+item.image_medium+'" target="_new">';
+				var infocontent = infocontent +  '<img class="media-object" src="' + item.image_thumb + '" />';
+			var infocontent = infocontent +  '</a>';
+		var infocontent = infocontent +  '</div>';
+		var infocontent = infocontent +  '<div class="media-body" style="width:170px; word-wrap:break-word">';
+			var infocontent = infocontent +  '<h5 class="media-heading" style="width:170px">' + item.title + '</h5>';
+			var infocontent = infocontent +  '<p style="width:170px">' + item.caption + '</p>';
+			var infocontent = infocontent + '<i style="font-size: 10px; width:170px">Uploaded by: '+ item.username +'</i>';
+		var infocontent = infocontent +  '</div>';
+	var infocontent = infocontent +  '</div>';
 
     	marker.addListener("click", function(){
     		infoWindow.close();
-    		infoWindow.setContent(item.title);
+    		infoWindow.setContent(infocontent);
     		infoWindow.open(map, marker);
     	});
 
