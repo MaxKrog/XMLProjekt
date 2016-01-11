@@ -35,7 +35,7 @@ var createLocationMap = function(){
     });
 
     if( getParameterByName("lat").length > 0 && getParameterByName("lng").length > 0){
-    	//THIS IS CALLED IF COMING FROM MAP WITH A POSITION SET
+    	//THIS IS CALLED IF POSITION IS SET IN URL
     	var position = {
     		coords: {
     			latitude: getParameterByName("lat"),
@@ -43,18 +43,11 @@ var createLocationMap = function(){
     		}
     	};
     	newPosition(position);
-    } else {
-    	getLocation();
+    } else if (navigator.geolocation){
+    	navigator.geolocation.getCurrentPosition(newPosition);
     }
     
 }
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(newPosition);
-    }
-}
-
 
 function newPosition(position, k){
 
@@ -118,6 +111,12 @@ $(document).ready(function(){
 		formdata.append("lng", userPosition.lng);
 		formdata.append("tags", getTags());
 
+		//Change button style to indicate transfer in progress.
+		$("#submit").attr('disabled', true);
+		$("#submit").removeClass("btn-success");
+		$("#submit").addClass("btn-warning");
+		$("#submit").text("Upload in progress");
+
 	    $.ajax({
 	        url: '../misc/postImage.php',  //Server script to process data
 	        type: 'POST',
@@ -125,6 +124,13 @@ $(document).ready(function(){
 			//ajax-settings
 			processData: false,
 			contentType: false,
+			complete: function(){
+				//Turn button back to normal
+				$("#submit").removeClass("btn-warning");
+				$("#submit").addClass("btn-success");
+				$("#submit").text("Upload image");
+				$("#submit").attr('disabled', false);
+			},
 		        //Ajax events
 		    success: function( a){
 				console.log(a);
