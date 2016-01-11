@@ -11,8 +11,16 @@
 						<div class="nav-collapse">
 							<ul class="nav navbar-nav navbar-right">		
 								<xsl:if test="authorized = 'false'">
-									<li><a href="./login.php">Sign in</a></li>
-									
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="index.php">Frontpage</a></li>
+											<li><a href="gallery.php"> Gallery  </a></li>
+											<li><a href="map.php"> Map </a></li>	
+											<li role="separator" class="divider"></li>
+											<li id="adminpanel"><a href="./login.php"> Sign in </a></li>
+										</ul>
+									</li>	
 								</xsl:if>
 								<xsl:if test="authorized = 'true'">
 									<li class="dropdown">
