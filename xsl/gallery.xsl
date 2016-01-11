@@ -8,12 +8,14 @@
 				<meta name="viewport" content="width=device-width initial-scale=1" />
 
 				<link rel="stylesheet" type="text/css" href="../vendor/bootstrap.min.css"/>
+				<link rel="stylesheet" type="text/css" href="../vendor/lightbox.min.css"/>
 			</head>
 
 			<body>
 				<script src="../vendor/jquery.min.js" type="text/javascript"></script>
 				<script src="../vendor/bootstrap.min.js" type="text/javascript"></script>
 				<script src="../vendor/gallery.js" type="text/javascript"></script>
+				<script src="../vendor/lightbox.js" type="text/javascript"></script>
 
 				<section class="container-fluid">
 
@@ -37,7 +39,7 @@
 	<xsl:template match="posts/post">
 
         <div class="col-xs-4 col-sm-4 col-md-2">
-            <a href="{imagemedium}" class="thumbnail" data-toggle="tooltip" data-placement="top" title="{title}" target="_new">
+            <a href="{imagemedium}" class="thumbnail" data-lightbox="{@id}" data-title="{title}" data-toggle="tooltip" data-placement="top" title="{title}" target="_new">
                 <img src="{imagethumb}" alt="{title}" />
             </a>
         </div>

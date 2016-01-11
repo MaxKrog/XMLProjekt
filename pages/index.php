@@ -32,7 +32,7 @@ if($detect->isMobile()){
 				SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, tag
 					FROM posts AS A
 					LEFT JOIN post_tags AS B ON A.post_id = B.post_id
-				WHERE title LIKE '%$searchstring%' OR username LIKE '%$searchstring%'
+				WHERE title LIKE '%$searchstring%' OR username LIKE '%$searchstring%' OR caption LIKE '%searchstring%' OR tag LIKE '%$searchstring%'
 				ORDER BY post_id DESC";
 
 			$result = mysqli_query($mysqli, $query);

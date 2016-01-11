@@ -25,7 +25,7 @@
 						<section class="form-group">	
 							<label class="col-sm-2 control-label">Title</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="title" name="title" placeholder="Car on fire in rinkeby" />
+								<input type="text" class="form-control" id="title" name="title" placeholder="Car on fire" />
 							</div>
 						</section>
 						<section class="form-group">
