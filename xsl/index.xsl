@@ -36,7 +36,7 @@
 
 							<div class="col-md-6">
 
-								<form class="input-group" method="get">
+								<form class="input-group" method="GET">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="submit">Go!</button>
 									</span>

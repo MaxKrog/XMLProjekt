@@ -1,10 +1,10 @@
 <?php
 include "../database/connection.php";
 
-if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
+if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET THE POSTS IN JSON
 	header('Content-Type: application/json');
 
-	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng, username FROM posts;";
+	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng, username, createdat FROM posts;";
 
 	$result = mysqli_query($mysqli, $query);
 
@@ -17,7 +17,8 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
 			"image_medium" => $line->image_medium,
 			"lat" => $line->lat,
 			"lng" => $line->lng,
-			"username" => $line->username);
+			"username" => $line->username,
+			"created_at" => $line->createdat);
 
 		$JSON[] = $UserJSON;
 	}
@@ -31,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET
 include "./isLoggedIn.php";
 
 
-if( !isLoggedIn() ) {
+if( !isLoggedIn() ) { // If the user is not logged in at all, well..
 	header('HTTP/1.1 401 Unauthorized', true, 401);	
 	die("You have no business here");
 } else {
@@ -41,7 +42,7 @@ if( !isLoggedIn() ) {
 	$post_id = $_POST['id'];
 
 
-	if(!$role == "admin"){
+	if(!$role == "admin"){ //If not admin, then check if user uploaded the post.
 		$query = "SELECT username FROM posts WHERE post_id = '$post_id';";
 		$result = mysqli_query($mysqli, $query);
 		$line = $result->fetch_object();

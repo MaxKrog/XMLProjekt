@@ -44,6 +44,24 @@ if( isLoggedIn() ) {
 				}
 			
 		}
+
+		require_once './twitter/twitter.class.php';
+		$consumerKey = "36SAF1xFsyzakSGazWwQgkabM";
+		$consumerSecret = "SMA45qfZM8JyOfcXxMTVJvs9BTFb3fNaGOweXOriD0iDJsrqgV";
+		$accessToken = "4774088265-mSNkU78lrEfXTQcvDtyhwunpM6X4cnIZcSvs5sf";
+		$accessTokenSecret = "0cQtqqJmuPix8onmMSDmkNz24Re8oGyUO4xODFQo1Vbud";
+
+		// ENTER HERE YOUR CREDENTIALS (see readme.txt)
+		$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+		$twitterText = $title . "\n" . $caption . "\n" . "Uploaded by: " . $username;
+		$twitterImage = getcwd() . $filename_medium;
+
+		try {
+			$tweet = $twitter->send($twitterText, $twitterImage);
+		} catch (TwitterException $e) {
+			echo 'Error: ' . $e->getMessage();
+		}
+
 		
 		echo("success!");
 	} catch (Exception $e) {

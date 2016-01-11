@@ -17,11 +17,14 @@ var createLocationMap = function(){
         zoom: 16,
         streetViewControl: false,
         panControl: false,
-        mapTypeControl: false,
-        draggable: false
+        mapTypeControl: false
         }
 
     positionMap = new google.maps.Map( document.getElementById("locationMap"), mapOptions);
+
+    positionMap.addListener("dragend", function(){
+		newPosition(positionMap.getCenter());
+	})
     
     userPositionMarker = new google.maps.Marker({
         position: {
@@ -31,25 +34,27 @@ var createLocationMap = function(){
         map: positionMap
     });
 
-	getLocation();
+    if( getParameterByName("lat").length > 0 && getParameterByName("lng").length > 0){
+    	//THIS IS CALLED IF COMING FROM MAP WITH A POSITION SET
+    	var position = {
+    		coords: {
+    			latitude: getParameterByName("lat"),
+    			longitude: getParameterByName("lng")
+    		}
+    	};
+    	newPosition(position);
+    } else {
+    	getLocation();
+    }
     
 }
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(newPosition, enableDrag);
-    } else {
-        enableDrag();
+        navigator.geolocation.getCurrentPosition(newPosition);
     }
 }
 
-function enableDrag(){
-
-	positionMap.setOptions({draggable: true});
-	positionMap.addListener("dragend", function(){
-		newPosition(positionMap.getCenter());
-	})
-};
 
 function newPosition(position, k){
 
@@ -62,6 +67,18 @@ function newPosition(position, k){
 
 };
 
+
+//HELPER FUNCTIONS
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+//FORM SCRIPTS HERE ON DOWNWARDS
 function getTags() {
 	var tags = $("#tags span");
 	var usedTags = [];

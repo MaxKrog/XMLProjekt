@@ -23,7 +23,7 @@
 					<!-- TEMPLATE -->
 					<xsl:apply-templates select="userinfo"/>
 
-					<section class="row" style="margin-top:-30px" id="googleMap">
+					<section class="row" style="margin-top:-20px" id="googleMap">
 					</section>
 				</section>
 
