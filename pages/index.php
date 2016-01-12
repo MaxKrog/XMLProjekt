@@ -29,18 +29,25 @@ if($detect->isMobile()){
 			$searchstring = isset($_GET["searchstring"]) ? $_GET["searchstring"] : "";
 
 			$query = "
-				SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, tag
-					FROM posts AS A
-					LEFT JOIN post_tags AS B ON A.post_id = B.post_id
-				WHERE title LIKE '%$searchstring%' OR username LIKE '%$searchstring%' OR caption LIKE '%searchstring%' OR tag LIKE '%$searchstring%'
-				ORDER BY post_id DESC";
+				SELECT O.post_id, image_medium, image_thumb, title, caption, lat, lng, O.username, O.createdAt, tags, count(comment) AS commentCount
+    			FROM(
+        			SELECT A.post_id, image_medium, image_thumb, title, caption, lat, lng, username, createdAt, GROUP_CONCAT(tag) as tags
+        			FROM posts AS A
+        			LEFT JOIN post_tags AS B 
+            		ON A.post_id = B.post_id
+        			GROUP BY post_id) AS O 
+    			LEFT JOIN comments AS comments
+    			ON O.post_id = comments.post_id
+    			WHERE title LIKE '%$searchstring%' OR O.username LIKE '%$searchstring%' OR caption LIKE '%searchstring%' OR tags LIKE '%$searchstring%'
+    			GROUP BY O.post_id
+
+				ORDER BY post_id DESC;";
 
 			$result = mysqli_query($mysqli, $query);
 
 			$returnstring = '';
 
-			$line = $result->fetch_object();
-			while ($line) {
+			while ($line = $result->fetch_object()) {
 				$post_id = $line->post_id;
 				$title = $line->title;
 				$image_medium = $line->image_medium;
@@ -50,7 +57,9 @@ if($detect->isMobile()){
 				$lng = $line->lng;
 				$user = $line->username;
 				$createdAt = $line->createdAt;
-				
+				$tags = explode(",", $line->tags);
+				$commentCount = $line->commentCount;
+
 
 				$returnstring .= "<post id='$post_id'>";
 	            $returnstring .= "<title>$title</title>";
@@ -64,12 +73,11 @@ if($detect->isMobile()){
 	            $returnstring .= "<user>$user</user>";
 	            $returnstring .= "<createdat>$createdAt</createdat>";
 	            $returnstring .= "<tags>";
-	            do{
-	            	$tag = $line->tag;
+	            foreach( $tags as $tag){
 	            	$returnstring .= "<tag>$tag</tag>";
-	            	$line = $result->fetch_object();
-	            } while ( $line->post_id == $post_id );
+	            }
 	            $returnstring .= "</tags>";
+	            $returnstring .= "<commentcount>$commentCount</commentcount>";
 	            $returnstring .= "</post>";
 
 	        }

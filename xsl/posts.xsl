@@ -28,7 +28,8 @@
               
                 <i style="font-size: 10px">
                   Uploaded by: <b><xsl:value-of select="user" /></b> at <xsl:value-of select="createdat"/><br/>
-                  tags: <xsl:apply-templates select="tags/tag" />
+                  Tags: <xsl:apply-templates select="tags/tag" /><br/>
+                  Comments: <xsl:value-of select="commentcount" />
                 </i>
        				
        			</div>

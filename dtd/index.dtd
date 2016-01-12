@@ -10,7 +10,7 @@
 		<!ELEMENT username (#PCDATA)> 
 		<!ELEMENT role (#PCDATA)> 
 	<!ELEMENT posts (post*) >
-		<!ELEMENT post (title, caption?, imagemedium, imagethumb, location, user, createdat, tags) >
+		<!ELEMENT post (title, caption?, imagemedium, imagethumb, location, user, createdat, tags, commentcount) >
 			<!ATTLIST post id CDATA #REQUIRED >
 			
 			<!ELEMENT title (#PCDATA) >
@@ -24,5 +24,6 @@
 			<!ELEMENT createdat (#PCDATA) >
 			<!ELEMENT tags (tag*) >
 				<!ELEMENT tag (#PCDATA) >
+			<!ELEMENT commentcount (#PCDATA) >
 				
 				

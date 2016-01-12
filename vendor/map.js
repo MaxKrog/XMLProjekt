@@ -25,7 +25,13 @@ function fetchData(){
 		type: "GET",
 		url: "../misc/postAPI.php",
 		success: function(data){
+			console.log(data);
 			addMarkers(data);
+		},
+		error: function(a, b, c){
+			console.log(a);
+			console.log(b);
+			console.log(c);
 		}
 	})
 }
@@ -53,10 +59,13 @@ function addMarkers(data){
 			var infocontent = infocontent +  '</a>';
 		var infocontent = infocontent +  '</div>';
 		var infocontent = infocontent +  '<div class="media-body" style="width:170px; word-wrap:break-word">';
-			var infocontent = infocontent +  '<h5 class="media-heading" style="width:170px">' + item.title + '</h5>';
+			var infocontent = infocontent +  '<a href="http://xml.csc.kth.se/~mkrog/DM2517/projekt/pages/post.php?id=' + item.post_id + '" >';
+				var infocontent = infocontent +  '<h5 class="media-heading" style="width:170px">' + item.title + '</h5>';
+			var infocontent = infocontent +  '</a>';
 			var infocontent = infocontent +  '<p style="width:170px">' + item.caption + '</p>';
 			var infocontent = infocontent + '<i style="font-size: 10px; width:170px">Uploaded by: '+ item.username +'</i>';
 			var infocontent = infocontent + '<br/><i style="font-size: 10px; width:170px">'+ item.created_at +'</i>';
+			var infocontent = infocontent + '<br/><i style="font-size: 10px; width:170px">Comments: '+ item.commentcount +'</i>';
 		var infocontent = infocontent +  '</div>';
 	var infocontent = infocontent +  '</div>';
 

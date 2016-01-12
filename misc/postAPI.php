@@ -4,13 +4,20 @@ include "../database/connection.php";
 if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET THE POSTS IN JSON
 	header('Content-Type: application/json');
 
-	$query = "SELECT title, caption, image_thumb, image_medium, lat, lng, username, createdat FROM posts;";
+	$query = "
+		SELECT A.post_id, title, caption, image_thumb, image_medium, lat, lng, A.username, A.createdat, count(comment) AS commentCount
+		FROM posts AS A
+			LEFT JOIN comments as B
+				ON A.post_id = B.post_id
+		GROUP BY A.post_id
+		;";
 
 	$result = mysqli_query($mysqli, $query);
 
 	$JSON = array();
 	while($line = $result->fetch_object()){
 		$UserJSON = array(
+			"post_id" => $line->post_id,
 			"title" => $line->title,
 			"caption" => $line->caption,
 			"image_thumb" => $line->image_thumb,
@@ -18,7 +25,8 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){ //GET THE POSTS IN JSON
 			"lat" => $line->lat,
 			"lng" => $line->lng,
 			"username" => $line->username,
-			"created_at" => $line->createdat);
+			"created_at" => $line->createdat,
+			"commentcount" => $line->commentCount);
 
 		$JSON[] = $UserJSON;
 	}
