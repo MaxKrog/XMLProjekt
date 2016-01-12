@@ -30,6 +30,7 @@ while($line = $result->fetch_object()){
 
 header("Content-type: text/xml; charset=utf-8"); ?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/mobile/post.xsl"?>
 <!DOCTYPE kriz SYSTEM "http://xml.csc.kth.se/~mkrog/DM2517/projekt/dtd/post.dtd">
 <kriz>
 	<?php 
