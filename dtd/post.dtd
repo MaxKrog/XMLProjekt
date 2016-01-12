@@ -1,0 +1,27 @@
+<!-- PARAMETER ENTITITES -->
+<!ENTITY Ouml '&#246;'>
+<!ENTITY ouml '&#214;'>
+<!ENTITY brkbar '&#166;'>
+<!ENTITY ccedil '&#231;'>
+
+<!ELEMENT kriz (userinfo, post) >
+	<!ELEMENT userinfo (authorized, username?, role?)>
+		<!ELEMENT authorized (#PCDATA)>
+		<!ELEMENT username (#PCDATA)> 
+		<!ELEMENT role (#PCDATA)> 
+	<!ELEMENT post (title, caption, imagemedium, imagethumb, location, user, createdat, tags) >
+		<!ATTLIST post id CDATA #REQUIRED >
+		
+		<!ELEMENT title (#PCDATA) >
+		<!ELEMENT caption (#PCDATA) >
+		<!ELEMENT imagemedium (#PCDATA) >
+		<!ELEMENT imagethumb (#PCDATA) >
+		<!ELEMENT location (lat, lng) >
+			<!ELEMENT lat (#PCDATA) >
+			<!ELEMENT lng (#PCDATA) >
+		<!ELEMENT user (#PCDATA) >
+		<!ELEMENT createdat (#PCDATA) >
+		<!ELEMENT tags (tag*) >
+			<!ELEMENT tag (#PCDATA) >
+				
+				
