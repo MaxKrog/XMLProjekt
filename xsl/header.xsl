@@ -1,6 +1,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template match="userinfo">
+		<script src="../vendor/header.js"></script>
+
 		<header class="row">
 			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container">

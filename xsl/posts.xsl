@@ -5,9 +5,7 @@
 		<li class="list-group-item" data-lat="{location/lat}" data-lng="{location/lng}" data-title="{title}" data-id="{@id}" data-caption="{caption}" style="border-style:none">
        		<div class="media img-rounded" style="box-shadow: 5px 5px 10px grey; padding: 10px 10px 10px 10px; ">
        			<div class="media-left">
-       				<a href="{imagemedium}" target="_new">
        					<img class="media-object img-rounded" src="{imagethumb}"/>
-       				</a>
        			</div>
        			<div class="media-body" style="">
 
@@ -15,6 +13,10 @@
                         <span class="spanTitle center-text" > <xsl:value-of select="title" /></span>
                        
                         <span id="goto" style="cursor: pointer" class=" pull-right glyphicon glyphicon-pushpin"></span>
+
+                        <a href="post.php?id={@id}">
+                          <span id="goto" style="cursor: pointer;margin-right:10px" class=" pull-right glyphicon glyphicon-info-sign"></span>
+                        </a>
                         <xsl:if test="$usernameoradmin = 'admin' or $usernameoradmin = user">
                           <span id="update" class=" pull-right glyphicon glyphicon-cog" style="margin-right:10px;cursor:pointer"></span>
                         </xsl:if>

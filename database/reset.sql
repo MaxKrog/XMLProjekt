@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS tags CASCADE;
 DROP TABLE IF EXISTS post_tags CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
 
 
 CREATE TABLE users (
@@ -36,6 +37,14 @@ CREATE TABLE post_tags (
 	Constraint post_tags_pkey Primary Key(post_id, tag)
 );
 
+CREATE TABLE comments (
+	comment_id integer NOT NULL AUTO_INCREMENT,
+	post_id integer NOT NULL references posts(post_id) ON DELETE CASCADE,
+	comment text,
+	username varchar(10) references users(username),
+	createdAt DATETIME,
+	Constraint comments_pkey Primary Key(comment_id)
+);
 INSERT INTO users
 VALUES ('mkrog', 'mkrog', 'admin');
 
@@ -47,7 +56,7 @@ INSERT INTO tags
 VALUES("Murder");
 
 INSERT INTO tags
-VALUES("Animals");
+VALUES("Building");
 
 INSERT INTO tags
 VALUES("Food");
@@ -68,8 +77,11 @@ INSERT INTO tags
 VALUES("Crimescene");
 
 INSERT INTO tags
-VALUES("Police");
+VALUES("Party");
 
 INSERT INTO tags
-VALUES("Riot");
+VALUES("Techno");
+
+INSERT INTO tags
+VALUES("Teknofest");
 

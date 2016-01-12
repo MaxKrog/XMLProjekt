@@ -4,12 +4,12 @@
 <!ENTITY brkbar '&#166;'>
 <!ENTITY ccedil '&#231;'>
 
-<!ELEMENT kriz (userinfo, post) >
+<!ELEMENT kriz (userinfo, post, comments) >
 	<!ELEMENT userinfo (authorized, username?, role?)>
 		<!ELEMENT authorized (#PCDATA)>
 		<!ELEMENT username (#PCDATA)> 
 		<!ELEMENT role (#PCDATA)> 
-	<!ELEMENT post (title, caption, imagemedium, imagethumb, location, user, createdat, tags) >
+	<!ELEMENT post (title, caption, imagemedium, imagethumb, location, user, createdat, tags, comments) >
 		<!ATTLIST post id CDATA #REQUIRED >
 		<!ELEMENT title (#PCDATA) >
 		<!ELEMENT caption (#PCDATA) >
@@ -22,5 +22,9 @@
 		<!ELEMENT createdat (#PCDATA) >
 		<!ELEMENT tags (tag*) >
 			<!ELEMENT tag (#PCDATA) >
+		<!ELEMENT comments (comment*) >
+			<!ELEMENT comment (text, user, createdat) >
+				<!ATTLIST comment id CDATA #REQUIRED >
+				<!ELEMENT test (#PCDATA) >
 				
 				

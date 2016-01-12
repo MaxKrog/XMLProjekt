@@ -85,9 +85,8 @@ function addMarkerWindow(){
 	}
 	//IF LOGGED IN
 
-	var $addPinWindow = $('<div style="position:fixed; top: 5px; right: 5px; height:50px; background-color:white"> Add Post</div>');
+	var $addPinWindow = $('<div style="position:fixed; top: 5px; right: 5px; height:35px; background-color:white"></div>');
 	$addPinWindow.css("margin","10px 10px 0 0");
-	$addPinWindow.css("padding","0 10px");
 	$addPinWindow.css("border-radius","5px");
 	$addPinWindow.css("line-height","50px");
 	$addPinWindow.css("font-size","20px");
@@ -95,9 +94,13 @@ function addMarkerWindow(){
 	$addPinWindow.css("background-color","#5cb85c");
 	$addPinWindow.css("cursor","pointer");
 	$addPinWindow.index = 1;
-	$addPinWindow.click(function(){
+	$addPinButton = $('<button type="button" class="btn btn-success">Add Post</button>');
+	$addPinWindow.append($addPinButton);
+
+	$addPinButton.click(function(){
 		$(this).text("Select a location by clicking");
-		$(this).css("background-color", "#f0ad4e");
+		$(this).removeClass("btn-success");
+		$(this).addClass("btn-warning");
 
 		var marker = new google.maps.Marker({
 	    	map: map,
