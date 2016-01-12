@@ -27,8 +27,8 @@
 			<item>
 				<title>$title</title>
 				<description>$username uploaded a new post.</description>
-				<link>http://xml.csc.kth.se/~mkrog/DM2517/projekt/pages/index.php</link>
-				<guid>http://xml.csc.kth.se/~mkrog/DM2517/projekt/pages/index.php/$post_id</guid>
+				<link>http://xml.csc.kth.se/~mkrog/DM2517/projekt/pages/post.php?id=$post_id</link>
+				<guid>http://xml.csc.kth.se/~mkrog/DM2517/projekt/pages/post.php?id=$post_id</guid>
 				<pubDate>$createdAt</pubDate>
 			</item>
 			";
