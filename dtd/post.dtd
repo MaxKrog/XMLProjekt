@@ -11,7 +11,6 @@
 		<!ELEMENT role (#PCDATA)> 
 	<!ELEMENT post (title, caption, imagemedium, imagethumb, location, user, createdat, tags) >
 		<!ATTLIST post id CDATA #REQUIRED >
-		
 		<!ELEMENT title (#PCDATA) >
 		<!ELEMENT caption (#PCDATA) >
 		<!ELEMENT imagemedium (#PCDATA) >
