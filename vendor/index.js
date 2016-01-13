@@ -11,6 +11,7 @@ function initializeMap() {
 	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 	addMarkers(map);
+
 }
 google.maps.event.addDomListener(window, 'load', initializeMap);
 
@@ -152,4 +153,5 @@ function keepMapHeight() {
 		$("#googleMap").height(window.screen.availHeight-200);
 	}
 }
+
 
